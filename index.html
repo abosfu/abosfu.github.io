@@ -1,10 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Portfolio Page</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 </head>
 <body>
-  <h1>Welcome to My Portfolio!</h1>
-  <p>This is the beginning of my personal portfolio website.</p>
+  <header>
+    <h1>Welcome to My Portfolio!</h1>
+    <nav>
+      <ul>
+        <li><a href="#bio">Bio</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="bio">
+    <h2>About Me</h2>
+    <img src="images/profile-pic.jpg" alt="Profile Picture">
+    <p>Hi, I'm [Your Name], a passionate developer...</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <ul>
+      <li><a href="#">Project 1</a></li>
+      <li><a href="#">Project 2</a></li>
+    </ul>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>HTML, CSS, JavaScript</li>
+      <li>Python, Java</li>
+    </ul>
+  </section>
+
+  <footer id="contact">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/your-profile">Your Profile</a></p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
