@@ -31,6 +31,13 @@ header h1 {
   display: block;
   margin: 20px auto; /* Centers the image */
 }
+
+.profile-pic:hover {
+  transform: scale(1.1); /* Slightly enlarge the image on hover */
+  border-color: #18bc9c; /* Change border color on hover */
+}
+
+
 /* Navigation Styles */
 nav ul {
   list-style: none;
