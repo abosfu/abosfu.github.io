@@ -49,7 +49,6 @@ nav ul li a:hover {
   border-color: #18bc9c; /* Change border color on hover */
 }
 
-
 /* Navigation Styles */
 nav ul {
   list-style: none;
@@ -92,6 +91,37 @@ section h2 {
 section p {
   font-size: 1.1rem;
   color: #555;
+}
+
+/* project cards */
+.project-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  flex: 1 1 calc(33.333% - 40px);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
 }
 
 #skills ul {
