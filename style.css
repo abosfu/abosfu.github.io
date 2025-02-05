@@ -94,6 +94,19 @@ section p {
   color: #555;
 }
 
+
+/*Make links more interactive by adding a hover effect.*/
+a {
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #2c3e50;
+}
+
+
 /* Footer Styles */
 footer {
   background-color: #2c3e50; /* Dark blue-gray */
