@@ -151,6 +151,20 @@ a:hover {
   color: #2c3e50;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section {
+  animation: fadeIn 1s ease-out;
+}
 
 footer {
   background: linear-gradient(135deg, #2c3e50, #3498db);
