@@ -9,6 +9,7 @@ interface Project {
   demoImage?: string;
   demoVideo?: string;
   macbookImage?: string;
+  category?: string;
 }
 
 export function Projects() {
@@ -19,12 +20,14 @@ export function Projects() {
       tech: ['Next.js', 'TypeScript', 'tRPC', 'Prisma', 'PostgreSQL', 'Tailwind CSS'],
       githubUrl: 'https://github.com/abosfu/tragectory',
       macbookImage: '/images/Silver.png',
+      category: 'FULL STACK',
     },
     {
       title: 'Coming Soon',
       description: 'A new project is currently in development. Check back soon for updates and details about this exciting new work.',
       tech: ['In Development'],
       githubUrl: '#',
+      category: 'AI',
     },
   ];
 
@@ -56,6 +59,15 @@ export function Projects() {
                 {/* Content Side */}
                 <div className={`flex-1 ${isEven ? 'lg:pr-8' : 'lg:pl-8'}`}>
                   <div className="space-y-6">
+                    {/* Category */}
+                    {project.category && (
+                      <p
+                        className="text-[#7A7A7A] font-['Inter'] uppercase tracking-wide"
+                        style={{ fontSize: '12px', fontWeight: 400, letterSpacing: '0.1em' }}
+                      >
+                        {project.category}
+                      </p>
+                    )}
                     {/* Title */}
                     <h3
                       className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight"
