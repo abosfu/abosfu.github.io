@@ -1,5 +1,4 @@
 import { Github, ExternalLink } from 'lucide-react';
-import { BackgroundText } from './BackgroundText';
 
 interface Project {
   title: string;
@@ -9,6 +8,7 @@ interface Project {
   liveUrl?: string;
   demoImage?: string;
   demoVideo?: string;
+  macbookImage?: string;
 }
 
 export function Projects() {
@@ -18,12 +18,7 @@ export function Projects() {
       description: 'A career exploration tool that helps students, new grads, and career switchers discover structured career paths through real case studies. Built with Next.js, TypeScript, tRPC, and Prisma.',
       tech: ['Next.js', 'TypeScript', 'tRPC', 'Prisma', 'PostgreSQL', 'Tailwind CSS'],
       githubUrl: 'https://github.com/abosfu/tragectory',
-    },
-    {
-      title: 'Personal Website',
-      description: 'Personal portfolio website built with React, TypeScript, and Tailwind CSS. Features modern design, smooth animations, and responsive layout.',
-      tech: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
-      githubUrl: 'https://github.com/abosfu/abosfu.github.io',
+      macbookImage: '/images/Silver.png',
     },
     {
       title: 'Coming Soon',
@@ -34,15 +29,13 @@ export function Projects() {
   ];
 
   return (
-    <section id="projects" className="relative py-32 px-6 lg:px-12 bg-white">
-      <BackgroundText verticalPosition={25} horizontalOffset="left" opacity={0.03} />
-      <BackgroundText verticalPosition={75} horizontalOffset="right" opacity={0.03} />
+    <section id="projects" className="relative py-32 px-6 lg:px-12 bg-[#F4F4F4]">
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section Header - Minimal */}
-        <div className="mb-24">
+        {/* Section Header */}
+        <div className="mb-24 text-center">
           <h2
-            className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight"
-            style={{ fontSize: 'clamp(36px, 5vw, 56px)', fontWeight: 600, lineHeight: '1.1' }}
+            className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight uppercase"
+            style={{ fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 500, lineHeight: '1.1', letterSpacing: '0.05em' }}
           >
             Projects
           </h2>
@@ -123,16 +116,33 @@ export function Projects() {
                   </div>
                 </div>
 
-                {/* Demo Side - Placeholder for video/screenshot */}
+                {/* Demo Side - MacBook Image */}
                 <div className="flex-1 w-full lg:w-auto">
-                  <div
-                    className="w-full aspect-video bg-[#FAFAFA] rounded-lg flex items-center justify-center"
-                    style={{ minHeight: '400px' }}
-                  >
-                    <p className="text-[#7A7A7A] font-['Inter']" style={{ fontSize: '14px', fontWeight: 400 }}>
-                      Demo coming soon
-                    </p>
-                  </div>
+                  {project.macbookImage ? (
+                    <div
+                      className="w-full overflow-hidden group cursor-pointer bg-[#F4F4F4]"
+                      style={{ minHeight: '400px' }}
+                    >
+                      <img
+                        src={project.macbookImage}
+                        alt={project.title}
+                        className="w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.08]"
+                        style={{ 
+                          transformOrigin: 'center center',
+                          willChange: 'transform'
+                        }}
+                      />
+                    </div>
+                  ) : (
+                    <div
+                      className="w-full aspect-video bg-[#FAFAFA] rounded-lg flex items-center justify-center"
+                      style={{ minHeight: '400px' }}
+                    >
+                      <p className="text-[#7A7A7A] font-['Inter']" style={{ fontSize: '14px', fontWeight: 400 }}>
+                        Demo coming soon
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             );

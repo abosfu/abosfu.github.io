@@ -21,7 +21,7 @@ export function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-24 px-6 lg:px-12 bg-[#FAFAFA]">
+    <section id="experience" className="py-24 px-6 lg:px-12 bg-[#F4F4F4]">
       <div className="max-w-7xl mx-auto">
         <SectionHeader number="04" title="Experience / Value Delivered" />
 

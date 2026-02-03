@@ -1,15 +1,12 @@
-import { BackgroundText } from './BackgroundText';
-
 export function About() {
   return (
-    <section id="about" className="relative py-32 px-6 lg:px-12 bg-white">
-      <BackgroundText verticalPosition={30} horizontalOffset="right" opacity={0.03} />
-      <div className="max-w-4xl mx-auto relative z-10">
-        {/* Section Header - Minimal */}
-        <div className="mb-16">
+    <section id="about" className="relative py-32 px-6 lg:px-12 bg-[#F4F4F4]">
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Section Header */}
+        <div className="mb-16 text-center">
           <h2
-            className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight"
-            style={{ fontSize: 'clamp(36px, 5vw, 56px)', fontWeight: 600, lineHeight: '1.1' }}
+            className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight uppercase"
+            style={{ fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 500, lineHeight: '1.1', letterSpacing: '0.05em' }}
           >
             About
           </h2>

@@ -1,5 +1,4 @@
 import { Github, Linkedin } from 'lucide-react';
-import { BackgroundText } from './BackgroundText';
 
 interface HeroProps {
   onViewProjects: () => void;
@@ -9,7 +8,6 @@ interface HeroProps {
 export function Hero({ onViewProjects, onCopyEmail }: HeroProps) {
   return (
     <section id="hero" className="relative min-h-screen pt-20 px-6 lg:px-12 flex items-center">
-      <BackgroundText verticalPosition={50} horizontalOffset="center" opacity={0.03} />
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
         <div className="flex flex-col items-center text-center">

@@ -8,7 +8,7 @@ import { Toaster } from '@/app/components/ui/sonner';
 
 export default function App() {
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText('abdullah_omer@sfu.ca');
+    navigator.clipboard.writeText('abo4@sfu.ca');
     toast.success('Email copied to clipboard!');
   };
 
@@ -20,7 +20,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#F4F4F4]">
       {/* Toaster for notifications */}
       <Toaster position="bottom-right" />
 
