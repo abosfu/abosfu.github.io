@@ -1,4 +1,5 @@
 import { Github, ExternalLink } from 'lucide-react';
+import { ProjectSlideshow } from './ProjectSlideshow';
 
 interface Project {
   title: string;
@@ -10,17 +11,24 @@ interface Project {
   demoVideo?: string;
   macbookImage?: string;
   category?: string;
+  slides?: string[];
 }
 
 export function Projects() {
   const projects: Project[] = [
     {
       title: 'TRAJECTORY',
-      description: 'A career exploration tool that helps students, new grads, and career switchers discover structured career paths through real case studies. Built with Next.js, TypeScript, tRPC, and Prisma.',
+      description: 'An AI-assisted career exploration web app that helps students, new grads, and career switchers compare different career paths and get structured next steps, using tailored prompts and curated web results.',
       tech: ['Next.js', 'TypeScript', 'tRPC', 'Prisma', 'PostgreSQL', 'Tailwind CSS'],
       githubUrl: 'https://github.com/abosfu/tragectory',
-      macbookImage: '/images/Silver.png',
       category: 'FULL STACK',
+      slides: [
+        '/images/tragectory/1.png',
+        '/images/tragectory/2.png',
+        '/images/tragectory/3.png',
+        '/images/tragectory/4.png',
+        '/images/tragectory/5.png',
+      ],
     },
     {
       title: 'Coming Soon',
@@ -128,9 +136,11 @@ export function Projects() {
                   </div>
                 </div>
 
-                {/* Demo Side - MacBook Image */}
+                {/* Demo Side - Slideshow or Static Image */}
                 <div className="flex-1 w-full lg:w-auto">
-                  {project.macbookImage ? (
+                  {project.slides && project.slides.length > 0 ? (
+                    <ProjectSlideshow images={project.slides} projectTitle={project.title} />
+                  ) : project.macbookImage ? (
                     <div
                       className="w-full overflow-hidden group cursor-pointer bg-[#F4F4F4]"
                       style={{ minHeight: '400px' }}
