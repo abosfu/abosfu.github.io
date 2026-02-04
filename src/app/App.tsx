@@ -1,12 +1,15 @@
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from '@/app/components/Navbar';
 import { Hero } from '@/app/components/Hero';
 import { About } from '@/app/components/About';
 import { Projects } from '@/app/components/Projects';
 import { Contact } from '@/app/components/Contact';
+import { ProjectTrajectory } from '@/app/pages/ProjectTrajectory';
+import { ProjectMaple } from '@/app/pages/ProjectMaple';
 import { toast } from 'sonner';
 import { Toaster } from '@/app/components/ui/sonner';
 
-export default function App() {
+function Home() {
   const handleCopyEmail = () => {
     navigator.clipboard.writeText('abo4@sfu.ca');
     toast.success('Email copied to clipboard!');
@@ -20,20 +23,43 @@ export default function App() {
   };
 
   return (
+    <>
+      <Hero onViewProjects={scrollToProjects} onCopyEmail={handleCopyEmail} />
+      <About />
+      <Projects />
+      <Contact onCopyEmail={handleCopyEmail} />
+    </>
+  );
+}
+
+function AppShell() {
+  const location = useLocation();
+  const hideNavbar = location.pathname.startsWith('/projects/trajectory');
+
+  return (
     <div className="min-h-screen bg-[#F4F4F4]">
       {/* Toaster for notifications */}
       <Toaster position="bottom-right" />
 
       {/* Navigation */}
-      <Navbar />
+      {!hideNavbar && <Navbar />}
 
       {/* Main Content */}
       <main>
-        <Hero onViewProjects={scrollToProjects} onCopyEmail={handleCopyEmail} />
-        <About />
-        <Projects />
-        <Contact onCopyEmail={handleCopyEmail} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects/trajectory" element={<ProjectTrajectory />} />
+          <Route path="/projects/maple" element={<ProjectMaple />} />
+        </Routes>
       </main>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppShell />
+    </BrowserRouter>
   );
 }

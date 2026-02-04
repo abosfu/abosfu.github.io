@@ -1,43 +1,10 @@
-import { Github, ExternalLink } from 'lucide-react';
+import { Github, ExternalLink, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { ProjectSlideshow } from './ProjectSlideshow';
-
-interface Project {
-  title: string;
-  description: string;
-  tech: string[];
-  githubUrl: string;
-  liveUrl?: string;
-  demoImage?: string;
-  demoVideo?: string;
-  macbookImage?: string;
-  category?: string;
-  slides?: string[];
-}
+import { projectsData } from '@/data/projects';
 
 export function Projects() {
-  const projects: Project[] = [
-    {
-      title: 'TRAJECTORY',
-      description: 'An AI-assisted career exploration web app that helps students, new grads, and career switchers compare different career paths and get structured next steps, using tailored prompts and curated web results.',
-      tech: ['Next.js', 'TypeScript', 'tRPC', 'Prisma', 'PostgreSQL', 'Tailwind CSS'],
-      githubUrl: 'https://github.com/abosfu/tragectory',
-      category: 'FULL STACK',
-      slides: [
-        '/images/tragectory/1.png',
-        '/images/tragectory/2.png',
-        '/images/tragectory/3.png',
-        '/images/tragectory/4.png',
-        '/images/tragectory/5.png',
-      ],
-    },
-    {
-      title: 'Coming Soon',
-      description: 'A new project is currently in development. Check back soon for updates and details about this exciting new work.',
-      tech: ['In Development'],
-      githubUrl: '#',
-      category: 'AI',
-    },
-  ];
+  const projects = projectsData;
 
   return (
     <section id="projects" className="relative py-32 px-6 lg:px-12 bg-[#F4F4F4]">
@@ -107,7 +74,7 @@ export function Projects() {
                     </div>
 
                     {/* Links */}
-                    <div className="flex gap-4 pt-4">
+                    <div className="flex flex-wrap gap-4 pt-4">
                       {project.githubUrl !== '#' && (
                         <a
                           href={project.githubUrl}
@@ -131,6 +98,16 @@ export function Projects() {
                           <ExternalLink size={18} />
                           <span>Live</span>
                         </a>
+                      )}
+                      {project.caseStudyRoute && (
+                        <Link
+                          to={project.caseStudyRoute}
+                          className="flex items-center gap-2 text-[#0B0B0C] hover:text-[#4B4B4B] transition-colors font-['Inter'] group"
+                          style={{ fontSize: '15px', fontWeight: 500 }}
+                        >
+                          <span>Learn more</span>
+                          <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                        </Link>
                       )}
                     </div>
                   </div>
