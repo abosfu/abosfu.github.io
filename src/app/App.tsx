@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar } from '@/app/components/Navbar';
 import { Hero } from '@/app/components/Hero';
 import { About } from '@/app/components/About';
@@ -33,16 +33,13 @@ function Home() {
 }
 
 function AppShell() {
-  const location = useLocation();
-  const hideNavbar = location.pathname.startsWith('/projects/trajectory');
-
   return (
     <div className="min-h-screen bg-[#F4F4F4]">
       {/* Toaster for notifications */}
       <Toaster position="bottom-right" />
 
       {/* Navigation */}
-      {!hideNavbar && <Navbar />}
+      <Navbar />
 
       {/* Main Content */}
       <main>

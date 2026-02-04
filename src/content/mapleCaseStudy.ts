@@ -277,24 +277,4 @@ Building Maple as a product concept reinforced several lessons about real-world 
 	•	Customer experience improvements can be framed as operational improvements when aligned with cost drivers like labour pressure
 	•	Research feedback should shape scope decisions (ex: many users want the navigation + updates, but are skeptical about AI handling booking and sensitive info)
 	•	Incremental innovation can still be valuable when it solves high-frequency pain points in a grounded way
-
-⸻
-
-Appendix Assets You’ll Add as Media
-
-You said you’ll include these (perfect picks):
-	1.	Prototype for the application (primary image)
-	2.	Mobile screens (navigation / street view airport map feature)
-	3.	Consolidated user persona
-
-Optional (if you want one more visual later):
-	•	Competitor Analysis table (Appendix F) as a clean graphic screenshot
-	•	Financial Details (Appendix G) as one simplified visual (only if it matches your aesthetic)
-
-⸻
-
-If you want, I can also give you:
-	•	a shorter “case study lite” version for faster scrolling
-	•	or a web-ready component layout (like section blocks with CTA buttons + anchors) to match your site style exactly.`;
-
-
+`;

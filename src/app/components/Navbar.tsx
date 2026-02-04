@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
@@ -6,8 +6,32 @@ interface NavbarProps {}
 
 export function Navbar({}: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showName, setShowName] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+
+  useEffect(() => {
+    if (!isHomePage) {
+      // Always show name on non-home pages
+      setShowName(true);
+      return;
+    }
+
+    // On home page, show name only when scrolled past hero section
+    const handleScroll = () => {
+      const heroSection = document.getElementById('hero');
+      if (heroSection) {
+        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+        setShowName(window.scrollY > heroBottom - 100);
+      }
+    };
+
+    // Check initial scroll position
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isHomePage]);
 
   const scrollToSection = (sectionId: string) => {
     if (!isHomePage) {
@@ -35,10 +59,17 @@ export function Navbar({}: NavbarProps) {
           {/* Logo / Name */}
           <Link
             to="/"
-            className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight hover:opacity-70 transition-opacity"
-            style={{ fontSize: '18px', fontWeight: 600 }}
+            className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight hover:opacity-70 transition-all duration-500 ease-out"
+            style={{
+              fontSize: '18px',
+              fontWeight: 600,
+              opacity: showName ? 1 : 0,
+              transform: showName ? 'translateY(0)' : 'translateY(-10px)',
+              pointerEvents: showName ? 'auto' : 'none',
+              position: 'relative',
+            }}
           >
-            Abdullah
+            Abdullah Bin Omer
           </Link>
 
           {/* Desktop Navigation */}
