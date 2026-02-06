@@ -32,38 +32,8 @@ npm run dev
 npm run build
 ```
 
-## 📁 Project Structure
-
-```
-├── src/
-│   ├── app/
-│   │   ├── components/     # React components
-│   │   │   ├── ui/         # Reusable UI components
-│   │   │   └── ...         # Page sections
-│   │   └── App.tsx         # Main app component
-│   ├── data/               # Site configuration
-│   ├── styles/             # Global styles
-│   └── main.tsx            # Entry point
-├── public/                 # Static assets
-├── index.html              # HTML template
-└── vite.config.ts          # Vite configuration
-```
-
-## 🌐 Deployment
-
-This project can be deployed to:
-- **Vercel** (recommended)
-- **Netlify**
-- **GitHub Pages**
-- Any static hosting service
 
 ## 📝 License
 
 Private project - All rights reserved
 
-## 👤 Author
-
-**Abdullah Bin Omer**
-- GitHub: [@abosfu](https://github.com/abosfu)
-- LinkedIn: [abdullah-bin-omer-619124230](https://www.linkedin.com/in/abdullah-bin-omer-619124230/)
-- Email: abdullah_omer@sfu.ca
