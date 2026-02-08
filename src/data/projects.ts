@@ -132,5 +132,41 @@ export const trajectoryCaseStudy = {
     'Introduce simple progress tracking for completed next moves.',
     'Re‑enable strict linting and fully type all AI response handling.',
   ],
+
+  technicalArchitecture: {
+    frontend: [
+      'Next.js (App Router) + TypeScript',
+      'Tailwind CSS for a minimal, comparison-first UI',
+      'Client components for interactive path comparison and navigation',
+    ],
+    backend: [
+      'tRPC for fully type-safe API communication between frontend and backend',
+      'Server-side logic runs inside Next.js API routes',
+      'Clear separation between deterministic logic (path structure) and AI-generated explanations',
+    ],
+    ai: [
+      'Google Gemini API used as a controlled reasoning layer',
+      'Strict prompt constraints ensure the model:',
+      '• explains career paths rather than inventing them',
+      '• stays grounded in user input',
+      '• produces structured, readable summaries',
+      'AI is used for articulation and synthesis, not decision-making',
+    ],
+    dataSources: [
+      'External web search / scraping layer used to surface real-world examples (job posts, programs, case references)',
+      'Results are filtered and ranked before being passed into the reasoning layer',
+      'Designed so data sources can be swapped or extended without changing core logic',
+    ],
+    database: [
+      'PostgreSQL as the primary datastore',
+      'Prisma ORM for schema management and type-safe queries',
+      'Stores user profiles, generated paths, and associated metadata for persistence and iteration',
+    ],
+    deployment: [
+      'Deployed on Vercel',
+      'Environment-based configuration for API keys and services',
+      'CI/CD via GitHub → automatic redeploys on push',
+    ],
+  },
 };
 

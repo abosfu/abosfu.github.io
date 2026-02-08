@@ -285,6 +285,165 @@ export function ProjectTrajectory() {
           </div>
         </section>
 
+        {/* Technical Architecture Section */}
+        <section
+          id="trajectory-architecture"
+          className="py-20 px-6 lg:px-12 border-t border-[#E6E6E6]"
+        >
+          <div className="max-w-7xl mx-auto">
+            <h2
+              className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight uppercase mb-12 text-center"
+              style={{ fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 500, lineHeight: '1.1', letterSpacing: '0.05em' }}
+            >
+              Technical Architecture (At a Glance)
+            </h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              {/* Frontend */}
+              <div>
+                <h3
+                  className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight mb-4"
+                  style={{ fontSize: '20px', fontWeight: 600, lineHeight: '1.2' }}
+                >
+                  Frontend
+                </h3>
+                <ul className="space-y-2">
+                  {trajectoryCaseStudy.technicalArchitecture.frontend.map((item, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '16px' }}>•</span>
+                      <p
+                        className="text-[#4B4B4B] font-['Inter'] flex-1"
+                        style={{ fontSize: '15px', fontWeight: 400, lineHeight: '1.7' }}
+                      >
+                        {item}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Backend & APIs */}
+              <div>
+                <h3
+                  className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight mb-4"
+                  style={{ fontSize: '20px', fontWeight: 600, lineHeight: '1.2' }}
+                >
+                  Backend & APIs
+                </h3>
+                <ul className="space-y-2">
+                  {trajectoryCaseStudy.technicalArchitecture.backend.map((item, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '16px' }}>•</span>
+                      <p
+                        className="text-[#4B4B4B] font-['Inter'] flex-1"
+                        style={{ fontSize: '15px', fontWeight: 400, lineHeight: '1.7' }}
+                      >
+                        {item}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* AI Integration */}
+              <div>
+                <h3
+                  className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight mb-4"
+                  style={{ fontSize: '20px', fontWeight: 600, lineHeight: '1.2' }}
+                >
+                  AI Integration
+                </h3>
+                <ul className="space-y-2">
+                  {trajectoryCaseStudy.technicalArchitecture.ai.map((item, index) => {
+                    const isNested = item.trim().startsWith('•');
+                    const isParent = item.includes(':') && !isNested;
+                    return (
+                      <li key={index} className={isNested ? 'flex items-start gap-3 ml-6' : 'flex items-start gap-3'}>
+                        {!isParent && !isNested && <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '16px' }}>•</span>}
+                        {isParent && <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '16px' }}>•</span>}
+                        <p
+                          className="text-[#4B4B4B] font-['Inter'] flex-1"
+                          style={{ fontSize: '15px', fontWeight: 400, lineHeight: '1.7' }}
+                        >
+                          {isNested ? item.trim().substring(1).trim() : item}
+                        </p>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+
+              {/* Data Sources & Ingestion */}
+              <div>
+                <h3
+                  className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight mb-4"
+                  style={{ fontSize: '20px', fontWeight: 600, lineHeight: '1.2' }}
+                >
+                  Data Sources & Ingestion
+                </h3>
+                <ul className="space-y-2">
+                  {trajectoryCaseStudy.technicalArchitecture.dataSources.map((item, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '16px' }}>•</span>
+                      <p
+                        className="text-[#4B4B4B] font-['Inter'] flex-1"
+                        style={{ fontSize: '15px', fontWeight: 400, lineHeight: '1.7' }}
+                      >
+                        {item}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Database */}
+              <div>
+                <h3
+                  className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight mb-4"
+                  style={{ fontSize: '20px', fontWeight: 600, lineHeight: '1.2' }}
+                >
+                  Database
+                </h3>
+                <ul className="space-y-2">
+                  {trajectoryCaseStudy.technicalArchitecture.database.map((item, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '16px' }}>•</span>
+                      <p
+                        className="text-[#4B4B4B] font-['Inter'] flex-1"
+                        style={{ fontSize: '15px', fontWeight: 400, lineHeight: '1.7' }}
+                      >
+                        {item}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Deployment */}
+              <div>
+                <h3
+                  className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight mb-4"
+                  style={{ fontSize: '20px', fontWeight: 600, lineHeight: '1.2' }}
+                >
+                  Deployment
+                </h3>
+                <ul className="space-y-2">
+                  {trajectoryCaseStudy.technicalArchitecture.deployment.map((item, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '16px' }}>•</span>
+                      <p
+                        className="text-[#4B4B4B] font-['Inter'] flex-1"
+                        style={{ fontSize: '15px', fontWeight: 400, lineHeight: '1.7' }}
+                      >
+                        {item}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Learnings & Next Improvements Section */}
         <section className="py-20 px-6 lg:px-12 border-t border-[#E6E6E6]">
           <div className="max-w-7xl mx-auto">
