@@ -25,7 +25,7 @@ export function Hero({ onViewProjects, onCopyEmail }: HeroProps) {
             className="text-[#4B4B4B] font-['Inter'] max-w-2xl mb-10"
             style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
           >
-            CS student + Business minor building scalable products that turn clean engineering into real-world impact.
+            Engineer by training. Operator by mindset. Building AI systems that create leverage.
           </p>
 
           {/* Buttons */}

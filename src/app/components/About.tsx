@@ -13,19 +13,86 @@ export function About() {
         </div>
 
         {/* Content - Seamless, No Boxes */}
-        <div className="space-y-8">
+        <div className="space-y-6 max-w-3xl mx-auto">
           <p
             className="text-[#4B4B4B] font-['Inter']"
             style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}
           >
-            I build like an operator: I start from the real problem, pressure-test assumptions, and prioritize what drives real outcomes. Then I engineer systems that are clean, maintainable, and built to scale—because shipping is only step one; reliability, iteration, and growth are the work.
+            I build from the problem outward.
           </p>
 
           <p
             className="text-[#4B4B4B] font-['Inter']"
             style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}
           >
-            With a foundation in Computer Science and a minor in Business Administration, I focus on turning technical precision into products people rely on—and businesses can grow around. I'm drawn to environments where execution matters, feedback loops are tight, and the goal is to build something that earns trust through performance.
+            Before writing code, I ask:
+          </p>
+
+          <ul className="space-y-2 ml-6">
+            <li className="text-[#4B4B4B] font-['Inter']" style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}>
+              Who feels this pain?
+            </li>
+            <li className="text-[#4B4B4B] font-['Inter']" style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}>
+              Why does it matter?
+            </li>
+            <li className="text-[#4B4B4B] font-['Inter']" style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}>
+              What would make this valuable enough to pay for?
+            </li>
+          </ul>
+
+          <p
+            className="text-[#4B4B4B] font-['Inter']"
+            style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}
+          >
+            My Computer Science foundation helps me build systems that are reliable and scalable. My Business minor pushes me to think about incentives, adoption, and traction.
+          </p>
+
+          <p
+            className="text-[#4B4B4B] font-['Inter']"
+            style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}
+          >
+            I'm especially drawn to AI systems that reduce friction, increase clarity, and help people make better decisions.
+          </p>
+
+          <p
+            className="text-[#4B4B4B] font-['Inter']"
+            style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}
+          >
+            I care about:
+          </p>
+
+          <ul className="space-y-2 ml-6">
+            <li className="flex items-start gap-3">
+              <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '19px' }}>•</span>
+              <span className="text-[#4B4B4B] font-['Inter']" style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}>
+                Clean architecture
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '19px' }}>•</span>
+              <span className="text-[#4B4B4B] font-['Inter']" style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}>
+                Tight feedback loops
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '19px' }}>•</span>
+              <span className="text-[#4B4B4B] font-['Inter']" style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}>
+                Measurable outcomes
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '19px' }}>•</span>
+              <span className="text-[#4B4B4B] font-['Inter']" style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}>
+                Real-world applicability
+              </span>
+            </li>
+          </ul>
+
+          <p
+            className="text-[#4B4B4B] font-['Inter']"
+            style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}
+          >
+            I'm here to ship products that survive contact with the real world — and keep getting better through iteration.
           </p>
         </div>
       </div>
