@@ -56,7 +56,15 @@ export function Projects() {
                       className="text-[#4B4B4B] font-['Inter']"
                       style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                     >
-                      {project.description}
+                      {project.description.includes('. ') ? (
+                        <>
+                          <span style={{ fontWeight: 600 }}>{project.description.split('. ')[0]}.</span>
+                          {' '}
+                          {project.description.split('. ').slice(1).join('. ')}
+                        </>
+                      ) : (
+                        project.description
+                      )}
                     </p>
 
                     {/* Tech Tags - Minimal */}

@@ -6,6 +6,7 @@ import { Projects } from '@/app/components/Projects';
 import { Contact } from '@/app/components/Contact';
 import { ProjectTrajectory } from '@/app/pages/ProjectTrajectory';
 import { ProjectMaple } from '@/app/pages/ProjectMaple';
+import { ProjectOps } from '@/app/pages/ProjectOps';
 import { toast } from 'sonner';
 import { Toaster } from '@/app/components/ui/sonner';
 
@@ -45,6 +46,7 @@ function AppShell() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/projects/projectops" element={<ProjectOps />} />
           <Route path="/projects/trajectory" element={<ProjectTrajectory />} />
           <Route path="/projects/maple" element={<ProjectMaple />} />
         </Routes>
