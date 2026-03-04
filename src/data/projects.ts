@@ -12,29 +12,53 @@ export interface ProjectData {
   timeline?: string;
   status?: string;
   caseStudyRoute?: string;
+  placeholderText?: string;
 }
-
-const PROJECTOPS_GITHUB_URL = 'https://github.com/abosfu/projectops';
 
 export const projectsData: ProjectData[] = [
   {
-    id: 'projectops',
-    title: 'ProjectOps',
+    id: 'lead-scorer',
+    title: 'LeadScorer',
+    description: 'AI System for Prioritizing Business Opportunities',
+    tech: ['Python', 'Scikit-learn', 'Pandas', 'NumPy', 'Matplotlib', 'ML Classification'],
+    githubUrl: 'https://github.com/abosfu/lead-scorer',
+    category: 'AI',
+    caseStudyRoute: '/projects/lead-scorer',
+    macbookImage: '/dist/images/lead-score/lead-score.png',
+  },
+  {
+    id: 'maple',
+    title: 'Maple',
     description:
-      'Internal Construction Operations Intelligence — a portfolio-level risk dashboard for schedule, budget, and critical path exposure.',
-    tech: ['Next.js', 'TypeScript', 'CSV Ingestion', 'Risk Scoring', 'Data Visualization'],
-    githubUrl: PROJECTOPS_GITHUB_URL,
-    category: 'OPERATIONS INTELLIGENCE',
-    role: 'Solo developer',
+      'A product strategy and experience design concept for airline customer support, focused on making trips feel calmer, clearer, and more predictable end-to-end.',
+    tech: ['Product Strategy', 'UX Research', 'Service Blueprinting', 'Customer Experience'],
+    githubUrl: '#',
+    category: 'Product Strategy & Experience Design',
+    role: 'Product & Experience Designer',
     timeline: '2025',
-    status: 'In Progress',
-    caseStudyRoute: '/projects/projectops',
-    slides: [
-      '/images/projectops/1.png',
-      '/images/projectops/2.png',
-      '/images/projectops/4.png',
-      '/images/projectops/5.png',
-    ],
+    status: 'Concept',
+    caseStudyRoute: '/projects/maple',
+    macbookImage: '/images/maple/maplefront.png',
+  },
+  {
+    id: 'marketscout',
+    title: 'MarketScout',
+    description: 'CLI AI Strategy Engine that turns live market signals into actionable AI adoption roadmaps.',
+    tech: ['Python', 'Requests', 'Pydantic', 'Rich', 'JSON/Markdown/HTML', 'Disk Caching', 'Optional LLM (OpenAI/Claude)'],
+    githubUrl: '#',
+    category: 'AI',
+    caseStudyRoute: '/projects/marketscout',
+    placeholderText: 'Demo / visuals coming soon',
+  },
+  {
+    id: 'fightmatch',
+    title: 'FightMatch',
+    description: 'Data-Driven Fight Matchmaking & Ranking Analysis Engine',
+    tech: ['Python', 'BeautifulSoup', 'Requests', 'Pydantic', 'Pytest', 'JSON Reports', 'CLI Pipeline'],
+    githubUrl: '#',
+    category: 'AI',
+    caseStudyRoute: '/projects/fightmatch',
+    placeholderText: 'Demo / visuals coming soon',
   },
   {
     id: 'trajectory',
@@ -55,20 +79,6 @@ export const projectsData: ProjectData[] = [
       '/images/tragectory/4.png',
       '/images/tragectory/5.png',
     ],
-  },
-  {
-    id: 'maple',
-    title: 'Maple',
-    description:
-      'A product strategy and experience design concept for airline customer support, focused on making trips feel calmer, clearer, and more predictable end-to-end.',
-    tech: ['Product Strategy', 'UX Research', 'Service Blueprinting', 'Customer Experience'],
-    githubUrl: '#',
-    category: 'Product Strategy & Experience Design',
-    role: 'Product & Experience Designer',
-    timeline: '2025',
-    status: 'Concept',
-    caseStudyRoute: '/projects/maple',
-    macbookImage: '/images/maple/maplefront.png',
   },
 ];
 
@@ -190,61 +200,3 @@ export const trajectoryCaseStudy = {
     ],
   },
 };
-
-export const projectOpsCaseStudy = {
-  overview:
-    'ProjectOps is an internal operations intelligence dashboard for construction portfolios. It ingests weekly CSV snapshots from project management systems and computes risk signals—schedule lag, critical path exposure, budget overruns, and subcontractor concentration—enabling data-driven portfolio management decisions.',
-
-  problemIntro:
-    'Portfolio-level construction operations need risk visibility across concurrent projects. Without centralized intelligence, teams miss schedule delays, budget overruns, and dependency bottlenecks until they become critical.',
-
-  problemPoints: [
-    "Multiple concurrent projects create blind spots—schedule slippage in one project can cascade across the portfolio.",
-    "Budget overruns are detected too late, after commitments are already made.",
-    "Subcontractor concentration risk isn't visible until a key vendor becomes a bottleneck.",
-    "Critical path dependencies between projects aren't tracked at the portfolio level.",
-  ],
-
-  whatItDoes: [
-    "Weekly CSV snapshot ingestion from project management systems.",
-    "Computed health score per project based on schedule, budget, and dependency metrics.",
-    "Behind-schedule detection using expected vs actual progress thresholds.",
-    "Critical path exposure visualization showing inter-project dependencies.",
-    "Budget overburn alerts when spend exceeds allocated percentages.",
-    "Bottleneck tables highlighting subcontractor concentration and resource constraints.",
-    "Status charts providing at-a-glance portfolio health.",
-  ],
-
-  metrics: {
-    behindSchedule: "Tasks are flagged as behind schedule when expected progress exceeds actual progress by 10% or more. Expected progress is computed from planned start and end dates relative to snapshot time.",
-    criticalPathRisk: "A task is at critical path risk if its status is blocked, or if it depends on another task that is blocked or behind schedule. Only direct dependencies are evaluated.",
-    budgetOverburn: "A task has budget overburn if budget spent exceeds budget allocated. Comparison is direct: budget_spent > budget_allocated.",
-    projectedOverrun: "Projected overrun is calculated using current overrun (if spent > allocated) or projected final cost based on spend rate. Formula: (spend_rate × 100) - budget_allocated, where spend_rate = budget_spent / avg_progress_pct.",
-  },
-
-  dataAssumptions: [
-    "CSV must include: project_id, task_id, planned_start, planned_end, progress_pct, budget_allocated, budget_spent.",
-    "Missing trades/subcontractors are mapped to \"unknown\".",
-    "Progress percentages are clamped to 0-100 range.",
-    "Missing budget_spent values default to 0.",
-    "Status values are normalized to: not_started, in_progress, blocked, done, unknown.",
-  ],
-
-  techStack: [
-    "Next.js + TypeScript for type-safe frontend",
-    "React for component architecture",
-    "CSV ingestion pipeline with validation and normalization",
-    "Risk scoring engine with weighted health score calculation",
-    "Recharts for data visualization",
-    "Tailwind CSS for minimal UI",
-  ],
-
-  nextSteps: [
-    "Backend persistence layer for historical snapshots and trend analysis",
-    "Real integrations with project management APIs (Procore, Autodesk, etc.)",
-    "Authentication and multi-tenant support for different construction firms",
-    "Multi-snapshot comparisons to track portfolio health over time",
-    "Automated alerting for critical risk thresholds",
-  ],
-};
-

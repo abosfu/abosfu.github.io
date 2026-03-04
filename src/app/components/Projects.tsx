@@ -146,7 +146,7 @@ export function Projects() {
                       style={{ minHeight: '400px' }}
                     >
                       <p className="text-[#7A7A7A] font-['Inter']" style={{ fontSize: '14px', fontWeight: 400 }}>
-                        Demo coming soon
+                        {project.placeholderText ?? 'Demo coming soon'}
                       </p>
                     </div>
                   )}

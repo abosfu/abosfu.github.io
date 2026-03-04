@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from '@/app/components/Navbar';
 import { Hero } from '@/app/components/Hero';
 import { About } from '@/app/components/About';
@@ -6,9 +7,21 @@ import { Projects } from '@/app/components/Projects';
 import { Contact } from '@/app/components/Contact';
 import { ProjectTrajectory } from '@/app/pages/ProjectTrajectory';
 import { ProjectMaple } from '@/app/pages/ProjectMaple';
-import { ProjectOps } from '@/app/pages/ProjectOps';
+import { ProjectLeadScorer } from './pages/ProjectLeadScorer';
+import { ProjectMarketScout } from './pages/ProjectMarketScout';
+import { ProjectFightMatch } from './pages/ProjectFightMatch';
 import { toast } from 'sonner';
 import { Toaster } from '@/app/components/ui/sonner';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 function Home() {
   const handleCopyEmail = () => {
@@ -46,7 +59,9 @@ function AppShell() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/projects/projectops" element={<ProjectOps />} />
+          <Route path="/projects/lead-scorer" element={<ProjectLeadScorer />} />
+          <Route path="/projects/marketscout" element={<ProjectMarketScout />} />
+          <Route path="/projects/fightmatch" element={<ProjectFightMatch />} />
           <Route path="/projects/trajectory" element={<ProjectTrajectory />} />
           <Route path="/projects/maple" element={<ProjectMaple />} />
         </Routes>
@@ -58,6 +73,7 @@ function AppShell() {
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <AppShell />
     </BrowserRouter>
   );
