@@ -24,7 +24,7 @@ export const projectsData: ProjectData[] = [
     githubUrl: 'https://github.com/abosfu/lead-scorer',
     category: 'AI',
     caseStudyRoute: '/projects/lead-scorer',
-    macbookImage: '/dist/images/lead-score/lead-score.png',
+    macbookImage: '/images/lead-score/leadscore.png',
   },
   {
     id: 'maple',
