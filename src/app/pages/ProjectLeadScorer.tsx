@@ -61,8 +61,8 @@ export function ProjectLeadScorer() {
         </section>
 
         {/* Case Study Body */}
-        <section className="pb-24 px-6 lg:px-12">
-          <div className="max-w-5xl mx-auto space-y-8">
+        <section className="pb-24 px-6 lg:px-12 border-t border-[#E6E6E6]">
+          <div className="max-w-5xl mx-auto space-y-8 pt-16">
             {/* Separator */}
             <p
               className="text-[#B3B3B3] font-['Inter']"

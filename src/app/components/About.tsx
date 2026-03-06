@@ -25,74 +25,23 @@ export function About() {
             className="text-[#4B4B4B] font-['Inter']"
             style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}
           >
-            Before writing code, I ask:
-          </p>
-
-          <ul className="space-y-2 ml-6">
-            <li className="text-[#4B4B4B] font-['Inter']" style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}>
-              Who feels this pain?
-            </li>
-            <li className="text-[#4B4B4B] font-['Inter']" style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}>
-              Why does it matter?
-            </li>
-            <li className="text-[#4B4B4B] font-['Inter']" style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}>
-              What would make this valuable enough to pay for?
-            </li>
-          </ul>
-
-          <p
-            className="text-[#4B4B4B] font-['Inter']"
-            style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}
-          >
-            My Computer Science foundation helps me build systems that are reliable and scalable. My Business minor pushes me to think about incentives, adoption, and traction.
+            Who feels this pain? Why does it matter? What would make it valuable enough to pay for?
           </p>
 
           <p
             className="text-[#4B4B4B] font-['Inter']"
             style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}
           >
-            I'm especially drawn to AI systems that reduce friction, increase clarity, and help people make better decisions.
+            Technical instinct: clean systems.
+            <br />
+            Business instinct: incentives, adoption, traction.
           </p>
 
           <p
             className="text-[#4B4B4B] font-['Inter']"
             style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}
           >
-            I care about:
-          </p>
-
-          <ul className="space-y-2 ml-6">
-            <li className="flex items-start gap-3">
-              <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '19px' }}>•</span>
-              <span className="text-[#4B4B4B] font-['Inter']" style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}>
-                Clean architecture
-              </span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '19px' }}>•</span>
-              <span className="text-[#4B4B4B] font-['Inter']" style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}>
-                Tight feedback loops
-              </span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '19px' }}>•</span>
-              <span className="text-[#4B4B4B] font-['Inter']" style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}>
-                Measurable outcomes
-              </span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '19px' }}>•</span>
-              <span className="text-[#4B4B4B] font-['Inter']" style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}>
-                Real-world applicability
-              </span>
-            </li>
-          </ul>
-
-          <p
-            className="text-[#4B4B4B] font-['Inter']"
-            style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}
-          >
-            I'm here to ship products that survive contact with the real world — and keep getting better through iteration.
+            I build decision tools that turn signals into action—scores, roadmaps, and next steps.
           </p>
         </div>
       </div>

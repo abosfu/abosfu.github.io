@@ -25,7 +25,7 @@ export function Hero({ onViewProjects, onCopyEmail }: HeroProps) {
             className="text-[#4B4B4B] font-['Inter'] max-w-2xl mb-10"
             style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
           >
-            Engineer by training. Operator by mindset. Building AI systems that create leverage.
+            Systems-first builder with product judgment
           </p>
 
           {/* Buttons */}

@@ -94,13 +94,14 @@ function renderFormattedContent(text: string, isFirstSection = false) {
       elements.push(
         <HeadingTag
           key={`heading-${keyCounter++}`}
-          className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight mb-4 mt-8 first:mt-0"
+          className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight uppercase mb-4 mt-8 first:mt-0"
           style={{
             fontSize: isMainSection
-              ? 'clamp(28px, 4vw, 36px)'
-              : 'clamp(20px, 2.5vw, 24px)',
-            fontWeight: 600,
+              ? 'clamp(22px, 2.5vw, 28px)'
+              : 'clamp(18px, 2.2vw, 22px)',
+            fontWeight: 500,
             lineHeight: '1.2',
+            letterSpacing: '0.05em',
           }}
         >
           {trimmed}
@@ -271,8 +272,8 @@ export function ProjectMaple() {
         </section>
 
         {/* Content Section */}
-        <section className="pb-24 px-6 lg:px-12">
-          <div className="max-w-5xl mx-auto space-y-8">
+        <section className="pb-24 px-6 lg:px-12 border-t border-[#E6E6E6]">
+          <div className="max-w-5xl mx-auto space-y-8 pt-16">
 
           {/* Content before prototype image */}
           <div className="prose prose-lg max-w-none">

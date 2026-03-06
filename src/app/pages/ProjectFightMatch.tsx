@@ -4,8 +4,14 @@ import { projectsData } from '@/data/projects';
 
 const fightmatch = projectsData.find(p => p.id === 'fightmatch')!;
 
-const sectionHeading = "text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight mb-4";
-const sectionHeadingStyle = { fontSize: '24px', fontWeight: 600, lineHeight: '1.2' as const };
+const sectionHeading =
+  "text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight uppercase mb-4";
+const sectionHeadingStyle = {
+  fontSize: 'clamp(22px, 2.5vw, 28px)',
+  fontWeight: 500,
+  lineHeight: '1.2' as const,
+  letterSpacing: '0.05em',
+};
 const subHeadingStyle = { fontSize: '20px', fontWeight: 600, lineHeight: '1.3' as const };
 const bodyStyle = { fontSize: '18px', fontWeight: 400, lineHeight: '1.7' as const };
 const bodyClass = "text-[#4B4B4B] font-['Inter']";
@@ -68,8 +74,8 @@ export function ProjectFightMatch() {
         </section>
 
         {/* Case Study Body */}
-        <section className="pb-24 px-6 lg:px-12">
-          <div className="max-w-5xl mx-auto space-y-8">
+        <section className="pb-24 px-6 lg:px-12 border-t border-[#E6E6E6]">
+          <div className="max-w-5xl mx-auto space-y-8 pt-16">
             <div className="space-y-4">
               <h2 className={sectionHeading} style={{ fontSize: '28px', ...sectionHeadingStyle }}>
                 FightMatch
