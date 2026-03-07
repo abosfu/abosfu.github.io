@@ -43,8 +43,8 @@ export const projectsData: ProjectData[] = [
   {
     id: 'marketscout',
     title: 'MarketScout',
-    description: 'CLI AI Strategy Engine that turns live market signals into actionable AI adoption roadmaps.',
-    tech: ['Python', 'Requests', 'Pydantic', 'Rich', 'JSON/Markdown/HTML', 'Disk Caching', 'Optional LLM (OpenAI/Claude)'],
+    description: 'A tool that turns live market signals into structured AI adoption notes and next steps.',
+    tech: ['Python', 'Requests', 'Pydantic', 'Rich', 'JSON/Markdown/HTML', 'Disk Caching', 'Optional LLM (OpenAI/Claude) — for summarization'],
     githubUrl: 'https://github.com/abosfu/marketscout',
     category: 'AI / Automation',
     caseStudyRoute: '/projects/marketscout',
