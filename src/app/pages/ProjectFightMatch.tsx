@@ -1,11 +1,26 @@
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { projectsData } from '@/data/projects';
+import { ProjectSideNav } from '@/app/components/ProjectSideNav';
 
 const fightmatch = projectsData.find(p => p.id === 'fightmatch')!;
 
+const FIGHT_MATCH_SECTIONS = [
+  { id: 'fightmatch-intro', label: 'FightMatch' },
+  { id: 'the-problem', label: 'The Problem' },
+  { id: 'the-solution', label: 'The Solution' },
+  { id: 'how-it-works', label: 'How the System Works' },
+  { id: 'technical-architecture', label: 'Technical Architecture' },
+  { id: 'command-line', label: 'Command Line Workflow' },
+  { id: 'engineering-challenges', label: 'Engineering Challenges' },
+  { id: 'technologies', label: 'Technologies' },
+  { id: 'results', label: 'Results' },
+  { id: 'future-improvements', label: 'Future Improvements' },
+  { id: 'why-i-built-this', label: 'Why I Built This' },
+];
+
 const sectionHeading =
-  "text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight uppercase mb-4";
+  "text-[#0B0B0C] font-heading tracking-tight uppercase mb-4";
 const sectionHeadingStyle = {
   fontSize: 'clamp(22px, 2.5vw, 28px)',
   fontWeight: 500,
@@ -14,18 +29,19 @@ const sectionHeadingStyle = {
 };
 const subHeadingStyle = { fontSize: '20px', fontWeight: 600, lineHeight: '1.3' as const };
 const bodyStyle = { fontSize: '18px', fontWeight: 400, lineHeight: '1.7' as const };
-const bodyClass = "text-[#4B4B4B] font-['Inter']";
+const bodyClass = "text-[#4B4B4B] font-body";
 
 export function ProjectFightMatch() {
   return (
-    <div className="min-h-screen bg-[#F4F4F4]">
-      <main className="pt-24">
+    <div className="min-h-screen bg-[#F4F4F4] font-body">
+      <ProjectSideNav sections={FIGHT_MATCH_SECTIONS} />
+      <main className="pt-24 xl:ml-52">
         {/* Hero Section */}
         <section className="py-24 px-6 lg:px-12">
           <div className="max-w-7xl mx-auto">
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-[#4B4B4B] hover:text-[#0B0B0C] transition-colors font-['Inter'] mb-12 group"
+              className="inline-flex items-center gap-2 text-[#4B4B4B] hover:text-[#0B0B0C] transition-colors font-body mb-12 group"
               style={{ fontSize: '15px', fontWeight: 500 }}
             >
               <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
@@ -34,7 +50,7 @@ export function ProjectFightMatch() {
 
             {fightmatch.category && (
               <p
-                className="text-[#7A7A7A] font-['Inter'] uppercase tracking-wide mb-3"
+                className="text-[#7A7A7A] font-body uppercase tracking-wide mb-3"
                 style={{ fontSize: '12px', fontWeight: 400, letterSpacing: '0.1em' }}
               >
                 {fightmatch.category}
@@ -42,8 +58,8 @@ export function ProjectFightMatch() {
             )}
 
             <h1
-              className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight mb-4"
-              style={{ fontSize: 'clamp(48px, 8vw, 72px)', fontWeight: 700, lineHeight: '1.1' }}
+              className="text-[#0B0B0C] font-heading mb-4"
+              style={{ fontSize: 'clamp(40px, 7vw, 64px)', fontWeight: 600, lineHeight: '1.15' }}
             >
               {fightmatch.title}
             </h1>
@@ -55,7 +71,7 @@ export function ProjectFightMatch() {
               {fightmatch.description}
             </p>
 
-            <div className="flex flex-wrap items-center gap-3 mb-10 text-sm font-['Inter']">
+            <div className="flex flex-wrap items-center gap-3 mb-10 text-sm font-body">
               <span className="text-[#7A7A7A]" style={{ fontSize: '13px', fontWeight: 400 }}>
                 Skills
               </span>
@@ -66,7 +82,7 @@ export function ProjectFightMatch() {
 
             {/* Demo placeholder */}
             <div className="max-w-2xl rounded-xl border border-[#E6E6E6] bg-[#FAFAFA] shadow-sm flex items-center justify-center py-16 px-8">
-              <p className="text-[#7A7A7A] font-['Inter']" style={{ fontSize: '16px', fontWeight: 400 }}>
+              <p className="text-[#7A7A7A] font-body" style={{ fontSize: '16px', fontWeight: 400 }}>
                 Demo / visuals coming soon
               </p>
             </div>
@@ -76,7 +92,7 @@ export function ProjectFightMatch() {
         {/* Case Study Body */}
         <section className="pb-24 px-6 lg:px-12 border-t border-[#E6E6E6]">
           <div className="max-w-5xl mx-auto space-y-8 pt-16">
-            <div className="space-y-4">
+            <div id="fightmatch-intro" className="space-y-4">
               <h2 className={sectionHeading} style={{ fontSize: '28px', ...sectionHeadingStyle }}>
                 FightMatch
               </h2>
@@ -100,9 +116,9 @@ export function ProjectFightMatch() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
-            <div className="space-y-4">
+            <div id="the-problem" className="space-y-4">
               <h2 className={sectionHeading} style={sectionHeadingStyle}>The Problem</h2>
               <p className={bodyClass} style={bodyStyle}>
                 Combat sports promotions regularly face complex matchmaking decisions:
@@ -124,9 +140,9 @@ export function ProjectFightMatch() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
-            <div className="space-y-4">
+            <div id="the-solution" className="space-y-4">
               <h2 className={sectionHeading} style={sectionHeadingStyle}>The Solution</h2>
               <p className={bodyClass} style={bodyStyle}>
                 FightMatch implements a full data pipeline that transforms raw fight statistics into structured datasets and matchup recommendations.
@@ -150,15 +166,15 @@ export function ProjectFightMatch() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
-            <div className="space-y-4">
+            <div id="how-it-works" className="space-y-4">
               <h2 className={sectionHeading} style={sectionHeadingStyle}>How the System Works</h2>
               <p className={bodyClass} style={bodyStyle}>
                 FightMatch follows a modular pipeline architecture.
               </p>
 
-              <p className="text-[#0B0B0C] font-['Space_Grotesk']" style={subHeadingStyle}>1. Data Collection</p>
+              <p className="text-[#0B0B0C] font-heading" style={subHeadingStyle}>1. Data Collection</p>
               <p className={bodyClass} style={bodyStyle}>
                 The pipeline begins by collecting fight information from UFCStats event pages.
               </p>
@@ -176,10 +192,10 @@ export function ProjectFightMatch() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
             <div className="space-y-4">
-              <p className="text-[#0B0B0C] font-['Space_Grotesk']" style={subHeadingStyle}>2. Dataset Construction</p>
+              <p className="text-[#0B0B0C] font-heading" style={subHeadingStyle}>2. Dataset Construction</p>
               <p className={bodyClass} style={bodyStyle}>
                 Raw HTML data is parsed and converted into structured datasets.
               </p>
@@ -207,10 +223,10 @@ export function ProjectFightMatch() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
             <div className="space-y-4">
-              <p className="text-[#0B0B0C] font-['Space_Grotesk']" style={subHeadingStyle}>3. Feature Engineering</p>
+              <p className="text-[#0B0B0C] font-heading" style={subHeadingStyle}>3. Feature Engineering</p>
               <p className={bodyClass} style={bodyStyle}>
                 The system converts raw fight statistics into performance metrics that describe a fighter’s recent form.
               </p>
@@ -232,10 +248,10 @@ export function ProjectFightMatch() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
             <div className="space-y-4">
-              <p className="text-[#0B0B0C] font-['Space_Grotesk']" style={subHeadingStyle}>4. Fighter Ranking</p>
+              <p className="text-[#0B0B0C] font-heading" style={subHeadingStyle}>4. Fighter Ranking</p>
               <p className={bodyClass} style={bodyStyle}>
                 A scoring model evaluates fighters based on these performance metrics.
               </p>
@@ -256,10 +272,10 @@ export function ProjectFightMatch() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
             <div className="space-y-4">
-              <p className="text-[#0B0B0C] font-['Space_Grotesk']" style={subHeadingStyle}>5. Matchup Evaluation</p>
+              <p className="text-[#0B0B0C] font-heading" style={subHeadingStyle}>5. Matchup Evaluation</p>
               <p className={bodyClass} style={bodyStyle}>
                 Once fighters are ranked, the system evaluates possible matchups.
               </p>
@@ -278,10 +294,10 @@ export function ProjectFightMatch() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
             <div className="space-y-4">
-              <p className="text-[#0B0B0C] font-['Space_Grotesk']" style={subHeadingStyle}>6. Recommendation Output</p>
+              <p className="text-[#0B0B0C] font-heading" style={subHeadingStyle}>6. Recommendation Output</p>
               <p className={bodyClass} style={bodyStyle}>
                 The system produces two outputs:
               </p>
@@ -304,9 +320,9 @@ export function ProjectFightMatch() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
-            <div className="space-y-4">
+            <div id="technical-architecture" className="space-y-4">
               <h2 className={sectionHeading} style={sectionHeadingStyle}>Technical Architecture</h2>
               <p className={bodyClass} style={bodyStyle}>
                 FightMatch is built as a modular Python project with clearly separated components.
@@ -352,9 +368,9 @@ export function ProjectFightMatch() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
-            <div className="space-y-4">
+            <div id="command-line" className="space-y-4">
               <h2 className={sectionHeading} style={sectionHeadingStyle}>Command Line Workflow</h2>
               <p className={bodyClass} style={bodyStyle}>
                 The system can be executed through a simple CLI workflow:
@@ -377,9 +393,9 @@ export function ProjectFightMatch() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
-            <div className="space-y-4">
+            <div id="engineering-challenges" className="space-y-4">
               <h2 className={sectionHeading} style={sectionHeadingStyle}>Engineering Challenges</h2>
               <p className={bodyClass} style={bodyStyle}>
                 Several technical challenges were addressed during development.
@@ -401,7 +417,7 @@ export function ProjectFightMatch() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
             <div className="space-y-4">
               <p className={bodyClass} style={bodyStyle}><strong>Robust HTML Parsing</strong></p>
@@ -413,7 +429,7 @@ export function ProjectFightMatch() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
             <div className="space-y-4">
               <p className={bodyClass} style={bodyStyle}><strong>Division Filtering</strong></p>
@@ -432,7 +448,7 @@ export function ProjectFightMatch() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
             <div className="space-y-4">
               <p className={bodyClass} style={bodyStyle}><strong>Matchup Scoring Design</strong></p>
@@ -444,9 +460,9 @@ export function ProjectFightMatch() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
-            <div className="space-y-4">
+            <div id="technologies" className="space-y-4">
               <h2 className={sectionHeading} style={sectionHeadingStyle}>Technologies</h2>
               <p className={bodyClass} style={bodyStyle}>
                 FightMatch was built using a lightweight Python data pipeline stack.
@@ -473,9 +489,9 @@ export function ProjectFightMatch() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
-            <div className="space-y-4">
+            <div id="results" className="space-y-4">
               <h2 className={sectionHeading} style={sectionHeadingStyle}>Results</h2>
               <p className={bodyClass} style={bodyStyle}>
                 The system successfully produces:
@@ -491,9 +507,9 @@ export function ProjectFightMatch() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
-            <div className="space-y-4">
+            <div id="future-improvements" className="space-y-4">
               <h2 className={sectionHeading} style={sectionHeadingStyle}>Future Improvements</h2>
               <p className={bodyClass} style={bodyStyle}>
                 Several potential extensions could significantly expand the project.
@@ -504,7 +520,7 @@ export function ProjectFightMatch() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
             <div className="space-y-4">
               <p className={bodyClass} style={bodyStyle}><strong>Expanded Division Coverage</strong></p>
@@ -516,7 +532,7 @@ export function ProjectFightMatch() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
             <div className="space-y-4">
               <p className={bodyClass} style={bodyStyle}><strong>Fight Style Clustering</strong></p>
@@ -525,7 +541,7 @@ export function ProjectFightMatch() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
             <div className="space-y-4">
               <p className={bodyClass} style={bodyStyle}><strong>Interactive Dashboard</strong></p>
@@ -534,9 +550,9 @@ export function ProjectFightMatch() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
-            <div className="space-y-4">
+            <div id="why-i-built-this" className="space-y-4">
               <h2 className={sectionHeading} style={sectionHeadingStyle}>Why I Built This</h2>
               <p className={bodyClass} style={bodyStyle}>
                 I’m interested in how data and analytics can support decision-making in complex domains.
@@ -552,7 +568,7 @@ export function ProjectFightMatch() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
           </div>
         </section>
       </main>

@@ -23,13 +23,13 @@ export function Education() {
                 Bachelor of Computing Science
               </h3>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-[var(--font-body)]"
                 style={{ fontSize: '18px', fontWeight: 500 }}
               >
                 Simon Fraser University
               </p>
               <p
-                className="text-[#7A7A7A] font-['Inter'] mt-1"
+                className="text-[#7A7A7A] font-[var(--font-body)] mt-1"
                 style={{ fontSize: '15px', fontWeight: 400 }}
               >
                 Expected 2027
@@ -43,13 +43,13 @@ export function Education() {
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <p
-                  className="text-[#7A7A7A] font-['Inter'] mb-2 tracking-wide"
+                  className="text-[#7A7A7A] font-[var(--font-body)] mb-2 tracking-wide"
                   style={{ fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em' }}
                 >
                   MAJOR
                 </p>
                 <p
-                  className="text-[#0B0B0C] font-['Inter']"
+                  className="text-[#0B0B0C] font-[var(--font-body)]"
                   style={{ fontSize: '17px', fontWeight: 600 }}
                 >
                   Computing Science
@@ -57,13 +57,13 @@ export function Education() {
               </div>
               <div>
                 <p
-                  className="text-[#7A7A7A] font-['Inter'] mb-2 tracking-wide"
+                  className="text-[#7A7A7A] font-[var(--font-body)] mb-2 tracking-wide"
                   style={{ fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em' }}
                 >
                   MINOR
                 </p>
                 <p
-                  className="text-[#0B0B0C] font-['Inter']"
+                  className="text-[#0B0B0C] font-[var(--font-body)]"
                   style={{ fontSize: '17px', fontWeight: 600 }}
                 >
                   Business Administration
@@ -77,7 +77,7 @@ export function Education() {
             {/* Focus Areas */}
             <div>
               <p
-                className="text-[#7A7A7A] font-['Inter'] mb-4 tracking-wide"
+                className="text-[#7A7A7A] font-[var(--font-body)] mb-4 tracking-wide"
                 style={{ fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em' }}
               >
                 FOCUS AREAS
@@ -87,7 +87,7 @@ export function Education() {
                   <div key={index} className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-[#0B0B0C] mt-2.5 flex-shrink-0" />
                     <p
-                      className="text-[#0B0B0C] font-['Inter']"
+                      className="text-[#0B0B0C] font-[var(--font-body)]"
                       style={{ fontSize: '16px', fontWeight: 500, lineHeight: '1.6' }}
                     >
                       {area}

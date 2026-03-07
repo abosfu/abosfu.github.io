@@ -1,157 +1,154 @@
-import { Github, ExternalLink, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { ProjectSlideshow } from './ProjectSlideshow';
+import { ArrowRight, Github } from 'lucide-react';
 import { projectsData } from '@/data/projects';
+import { ProjectSlideshow } from '@/app/components/ProjectSlideshow';
+
+const ROW_GAP = '120px'; /* 96–140px range */
+
+function MediaBlock({ project }: { project: (typeof projectsData)[0] }) {
+  const hasSlides = project.slides && project.slides.length > 0;
+  const hasMacbook = !!project.macbookImage;
+
+  if (hasSlides && project.slides!.length >= 1) {
+    return (
+      <div className="w-full max-w-[720px]">
+        <ProjectSlideshow images={project.slides!} projectTitle={project.title} />
+      </div>
+    );
+  }
+
+  if (hasMacbook) {
+    return (
+      <div className="w-full max-w-[640px] flex justify-center">
+        <img
+          src={project.macbookImage}
+          alt={project.title}
+          className="w-full max-w-full object-contain object-bottom"
+          style={{ minHeight: '280px', maxHeight: '520px' }}
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className="w-full max-w-[480px] flex items-center justify-center min-h-[280px] bg-[#F6F6F6]"
+      style={{ fontFamily: 'var(--font-body)' }}
+    >
+      <p className="text-[#7A7A7A]" style={{ fontSize: '15px', fontWeight: 400 }}>
+        Demo / visuals coming soon
+      </p>
+    </div>
+  );
+}
 
 export function Projects() {
   const projects = projectsData;
 
   return (
     <section id="projects" className="relative py-32 px-6 lg:px-12 bg-[#F4F4F4]">
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section Header */}
-        <div className="mb-24 text-center">
-          <h2
-            className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight uppercase"
-            style={{ fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 500, lineHeight: '1.1', letterSpacing: '0.05em' }}
-          >
-            Projects
-          </h2>
-        </div>
-
-        {/* Projects - Zigzag Layout */}
-        <div className="space-y-32">
+      <div className="max-w-6xl mx-auto relative z-10">
+        <div className="flex flex-col" style={{ gap: ROW_GAP }}>
           {projects.map((project, index) => {
-            const isEven = index % 2 === 0;
-            
+            const descriptionLeft = index % 2 === 0; /* 1st, 3rd, 5th: description left, picture right */
             return (
-              <div
-                key={index}
-                className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-16 ${
-                  isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                }`}
-              >
-                {/* Content Side */}
-                <div className={`flex-1 ${isEven ? 'lg:pr-8' : 'lg:pl-8'}`}>
-                  <div className="space-y-6">
-                    {/* Category */}
-                    {project.category && (
-                      <p
-                        className="text-[#7A7A7A] font-['Inter'] uppercase tracking-wide"
-                        style={{ fontSize: '12px', fontWeight: 400, letterSpacing: '0.1em' }}
+            <div
+              key={project.id}
+              className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center"
+            >
+              {/* Text column */}
+              <div className={`max-w-[580px] space-y-6 flex-1 ${descriptionLeft ? 'lg:order-1' : 'lg:order-2'}`}>
+                {project.category && (
+                  <p
+                    className="text-[#7A7A7A] uppercase tracking-[0.12em]"
+                    style={{ fontFamily: 'var(--font-body)', fontSize: '12px', fontWeight: 500 }}
+                  >
+                    {project.category}
+                  </p>
+                )}
+
+                <h3
+                  className="text-[#0B0B0C]"
+                  style={{
+                    fontFamily: 'var(--font-heading)',
+                    fontSize: 'clamp(32px, 4.5vw, 56px)',
+                    fontWeight: 800,
+                    lineHeight: 1.1,
+                    letterSpacing: '-0.02em',
+                  }}
+                >
+                  {project.title}
+                </h3>
+
+                <p
+                  className="text-[#3A3A3A] max-w-[55ch]"
+                  style={{ fontFamily: 'var(--font-body)', fontSize: '17px', fontWeight: 400, lineHeight: 1.7 }}
+                >
+                  {project.description.includes('. ') ? (
+                    <>
+                      <span style={{ fontWeight: 600 }}>{project.description.split('. ')[0]}.</span>
+                      {' '}
+                      {project.description.split('. ').slice(1).join('. ')}
+                    </>
+                  ) : (
+                    project.description
+                  )}
+                </p>
+
+                <div className="flex flex-wrap items-center gap-1 pt-1">
+                  {project.tech.map((item, techIndex) => (
+                    <span key={techIndex} className="text-[#7A7A7A]" style={{ fontFamily: 'var(--font-body)', fontSize: '13px', fontWeight: 400 }}>
+                      {item}
+                      {techIndex < project.tech.length - 1 && <span className="mx-1.5 text-[#7A7A7A]/70">•</span>}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="pt-2 flex flex-wrap items-center gap-3">
+                  {project.caseStudyRoute ? (
+                    <>
+                      <Link
+                        to={project.caseStudyRoute}
+                        className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-full border-2 border-[var(--accent-site)] text-[var(--accent-site)] hover:bg-[var(--accent-site)] hover:text-white transition-all hover:-translate-y-0.5"
+                        style={{ fontFamily: 'var(--font-body)', fontSize: '15px', fontWeight: 600 }}
                       >
-                        {project.category}
-                      </p>
-                    )}
-                    {/* Title */}
-                    <h3
-                      className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight"
-                      style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 600, lineHeight: '1.2' }}
-                    >
-                      {project.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p
-                      className="text-[#4B4B4B] font-['Inter']"
-                      style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
-                    >
-                      {project.description.includes('. ') ? (
-                        <>
-                          <span style={{ fontWeight: 600 }}>{project.description.split('. ')[0]}.</span>
-                          {' '}
-                          {project.description.split('. ').slice(1).join('. ')}
-                        </>
-                      ) : (
-                        project.description
-                      )}
-                    </p>
-
-                    {/* Tech Tags - Minimal */}
-                    <div className="flex flex-wrap gap-3 pt-2">
-                      {project.tech.map((item, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="text-[#7A7A7A] font-['Inter']"
-                          style={{ fontSize: '14px', fontWeight: 400 }}
-                        >
-                          {item}
-                          {techIndex < project.tech.length - 1 && <span className="mx-2">•</span>}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Links */}
-                    <div className="flex flex-wrap gap-4 pt-4">
-                      {project.githubUrl !== '#' && (
+                        <span>Learn more</span>
+                        <ArrowRight size={18} strokeWidth={2} />
+                      </Link>
+                      {project.githubUrl && project.githubUrl !== '#' && (
                         <a
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-[#0B0B0C] hover:text-[#4B4B4B] transition-colors font-['Inter']"
-                          style={{ fontSize: '15px', fontWeight: 500 }}
+                          className="inline-flex items-center justify-center text-[#4B4B4B] hover:text-[var(--accent-site)] transition-colors"
+                          aria-label={`${project.title} on GitHub`}
                         >
-                          <Github size={18} />
-                          <span>GitHub</span>
+                          <Github size={22} strokeWidth={1.75} />
                         </a>
                       )}
-                      {project.liveUrl && project.liveUrl !== '#' && (
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-[#0B0B0C] hover:text-[#4B4B4B] transition-colors font-['Inter']"
-                          style={{ fontSize: '15px', fontWeight: 500 }}
-                        >
-                          <ExternalLink size={18} />
-                          <span>Live</span>
-                        </a>
-                      )}
-                      {project.caseStudyRoute && (
-                        <Link
-                          to={project.caseStudyRoute}
-                          className="flex items-center gap-2 text-[#0B0B0C] hover:text-[#4B4B4B] transition-colors font-['Inter'] group"
-                          style={{ fontSize: '15px', fontWeight: 500 }}
-                        >
-                          <span>Learn more</span>
-                          <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                        </Link>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Demo Side - Slideshow or Static Image */}
-                <div className="flex-1 w-full lg:w-auto">
-                  {project.slides && project.slides.length > 0 ? (
-                    <ProjectSlideshow images={project.slides} projectTitle={project.title} />
-                  ) : project.macbookImage ? (
-                    <div
-                      className="w-full overflow-hidden group cursor-pointer bg-[#F4F4F4]"
-                      style={{ minHeight: '400px' }}
+                    </>
+                  ) : project.githubUrl && project.githubUrl !== '#' ? (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-full border-2 border-[var(--accent-site)] text-[var(--accent-site)] hover:bg-[var(--accent-site)] hover:text-white transition-all hover:-translate-y-0.5"
+                      style={{ fontFamily: 'var(--font-body)', fontSize: '15px', fontWeight: 600 }}
                     >
-                      <img
-                        src={project.macbookImage}
-                        alt={project.title}
-                        className="w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.08]"
-                        style={{ 
-                          transformOrigin: 'center center',
-                          willChange: 'transform'
-                        }}
-                      />
-                    </div>
-                  ) : (
-                    <div
-                      className="w-full aspect-video bg-[#FAFAFA] rounded-lg flex items-center justify-center"
-                      style={{ minHeight: '400px' }}
-                    >
-                      <p className="text-[#7A7A7A] font-['Inter']" style={{ fontSize: '14px', fontWeight: 400 }}>
-                        {project.placeholderText ?? 'Demo coming soon'}
-                      </p>
-                    </div>
-                  )}
+                      <span>View on GitHub</span>
+                      <ArrowRight size={18} strokeWidth={2} />
+                    </a>
+                  ) : null}
                 </div>
               </div>
+
+              {/* Media column */}
+              <div className={`w-full flex flex-col justify-center flex-1 overflow-hidden ${descriptionLeft ? 'lg:order-2' : 'lg:order-1'}`}>
+                <div className="transition-transform duration-300 ease-out hover:scale-105 origin-center">
+                  <MediaBlock project={project} />
+                </div>
+              </div>
+            </div>
             );
           })}
         </div>

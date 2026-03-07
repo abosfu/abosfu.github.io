@@ -29,7 +29,7 @@ export function ProjectCard({ title, description, tech, githubUrl, liveUrl, vari
 
         {/* Description */}
         <p
-          className="text-[#4B4B4B] font-['Inter']"
+          className="text-[#4B4B4B] font-[var(--font-body)]"
           style={{ fontSize: '16px', fontWeight: 400, lineHeight: '1.6' }}
         >
           {description}
@@ -40,7 +40,7 @@ export function ProjectCard({ title, description, tech, githubUrl, liveUrl, vari
           {tech.map((item, index) => (
             <span
               key={index}
-              className="px-3 py-1.5 rounded-lg bg-[#FAFAFA] text-[#4B4B4B] font-['Inter'] border border-[#E6E6E6]"
+              className="px-3 py-1.5 rounded-lg bg-[#FAFAFA] text-[#4B4B4B] font-[var(--font-body)] border border-[#E6E6E6]"
               style={{ fontSize: '13px', fontWeight: 500 }}
             >
               {item}
@@ -55,7 +55,7 @@ export function ProjectCard({ title, description, tech, githubUrl, liveUrl, vari
               href={githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 h-10 rounded-lg border border-[#E6E6E6] text-[#0B0B0C] hover:bg-[#FAFAFA] transition-colors font-['Inter']"
+              className="flex items-center gap-2 px-4 h-10 rounded-lg border border-[#E6E6E6] text-[#0B0B0C] hover:bg-[#FAFAFA] transition-colors font-[var(--font-body)]"
               style={{ fontSize: '14px', fontWeight: 500 }}
             >
               <Github size={16} />
@@ -67,7 +67,7 @@ export function ProjectCard({ title, description, tech, githubUrl, liveUrl, vari
               href={liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 h-10 rounded-lg border border-[#E6E6E6] text-[#0B0B0C] hover:bg-[#FAFAFA] transition-colors font-['Inter']"
+              className="flex items-center gap-2 px-4 h-10 rounded-lg border border-[#E6E6E6] text-[#0B0B0C] hover:bg-[#FAFAFA] transition-colors font-[var(--font-body)]"
               style={{ fontSize: '14px', fontWeight: 500 }}
             >
               <ExternalLink size={16} />

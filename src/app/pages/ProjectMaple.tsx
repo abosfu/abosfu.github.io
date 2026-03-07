@@ -3,6 +3,45 @@ import { mapleCaseStudy } from '@/content/mapleCaseStudy';
 import { ArrowLeft, Download } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { projectsData } from '@/data/projects';
+import { ProjectSideNav } from '@/app/components/ProjectSideNav';
+
+function slugify(text: string): string {
+  return text
+    .replace(/\s*\([^)]*\)\s*/g, '')
+    .replace(/&/g, 'and')
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '');
+}
+
+function getMapleSections(): { id: string; label: string }[] {
+  const sections: { id: string; label: string }[] = [];
+  const lines = mapleCaseStudy.split('\n');
+  let afterDivider = false;
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed === '⸻') {
+      afterDivider = true;
+      continue;
+    }
+    if (afterDivider && trimmed && trimmed.length < 80 && !trimmed.endsWith('.') && !trimmed.startsWith('•') && !trimmed.match(/^\d+\)/) && !trimmed.match(/^Tags?:/)) {
+      const sub = trimmed.match(/^(Short-term goal|Long-term goal|Mitigation strategies|For customers|For Air Canada)\b/i);
+      if (!sub) {
+        const id = slugify(trimmed);
+        if (id && !sections.some(s => s.id === id)) {
+          sections.push({ id, label: trimmed });
+        }
+      }
+      afterDivider = false;
+    } else if (trimmed) {
+      afterDivider = false;
+    }
+  }
+  return sections;
+}
+
+const MAPLE_SECTIONS = getMapleSections();
 
 // Helper function to render formatted text content
 function renderFormattedContent(text: string, isFirstSection = false) {
@@ -20,7 +59,7 @@ function renderFormattedContent(text: string, isFirstSection = false) {
         elements.push(
           <p
             key={`para-${keyCounter++}`}
-            className="text-[#4B4B4B] font-['Inter'] mb-6"
+            className="text-[#4B4B4B] font-body mb-6"
             style={{ fontSize: '17px', lineHeight: '1.75', fontWeight: 400 }}
           >
             {paraText}
@@ -91,10 +130,12 @@ function renderFormattedContent(text: string, isFirstSection = false) {
       flushParagraph();
       const HeadingTag = isSubsection ? 'h3' : 'h2';
       const isMainSection = !isSubsection;
+      const id = slugify(trimmed);
       elements.push(
         <HeadingTag
           key={`heading-${keyCounter++}`}
-          className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight uppercase mb-4 mt-8 first:mt-0"
+          id={id}
+          className="text-[#0B0B0C] font-heading tracking-tight uppercase mb-4 mt-8 first:mt-0 scroll-mt-28"
           style={{
             fontSize: isMainSection
               ? 'clamp(22px, 2.5vw, 28px)'
@@ -117,10 +158,10 @@ function renderFormattedContent(text: string, isFirstSection = false) {
       elements.push(
         <div key={`numbered-${keyCounter++}`} className="mb-4">
           <p
-            className="text-[#4B4B4B] font-['Inter']"
+            className="text-[#4B4B4B] font-body"
             style={{ fontSize: '17px', lineHeight: '1.75', fontWeight: 400 }}
           >
-            <span className="text-[#0B0B0C] font-semibold">{trimmed.match(/^\d+\)/)?.[0]}</span>{' '}
+            <span className="text-[#0B0B0C] font-semibold font-body">{trimmed.match(/^\d+\)/)?.[0]}</span>{' '}
             {content}
           </p>
         </div>
@@ -134,11 +175,11 @@ function renderFormattedContent(text: string, isFirstSection = false) {
       const content = trimmed.replace(/^[\t•\s]+/, '');
       elements.push(
         <div key={`bullet-${keyCounter++}`} className="mb-3 flex items-start gap-3">
-          <span className="text-[#0B0B0C] mt-1.5" style={{ fontSize: '18px' }}>
+          <span className="text-[#0B0B0C] mt-1.5 font-body" style={{ fontSize: '18px' }}>
             •
           </span>
           <p
-            className="text-[#4B4B4B] font-['Inter'] flex-1"
+            className="text-[#4B4B4B] font-body flex-1"
             style={{ fontSize: '17px', lineHeight: '1.75', fontWeight: 400 }}
           >
             {content}
@@ -183,15 +224,16 @@ export function ProjectMaple() {
   const subtitle = firstLines[1] || maple.description;
 
   return (
-    <div className="min-h-screen bg-[#F4F4F4]">
-      <main className="pt-24">
+    <div className="min-h-screen bg-[#F4F4F4] font-body">
+      <ProjectSideNav sections={MAPLE_SECTIONS} />
+      <main className="pt-24 xl:ml-52">
         {/* Hero Section */}
         <section className="py-24 px-6 lg:px-12">
           <div className="max-w-7xl mx-auto">
             {/* Back Button */}
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-[#4B4B4B] hover:text-[#0B0B0C] transition-colors font-['Inter'] mb-12 group"
+              className="inline-flex items-center gap-2 text-[#4B4B4B] hover:text-[#0B0B0C] transition-colors font-body mb-12 group"
               style={{ fontSize: '15px', fontWeight: 500 }}
             >
               <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
@@ -200,22 +242,22 @@ export function ProjectMaple() {
 
             {/* Title */}
             <h1
-              className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight mb-6"
-              style={{ fontSize: 'clamp(48px, 8vw, 72px)', fontWeight: 700, lineHeight: '1.1' }}
+              className="text-[#0B0B0C] font-heading mb-6"
+              style={{ fontSize: 'clamp(40px, 7vw, 64px)', fontWeight: 600, lineHeight: '1.15' }}
             >
               {title}
             </h1>
 
             {/* One-liner */}
             <p
-              className="text-[#4B4B4B] font-['Inter'] mb-8 max-w-3xl"
+              className="text-[#4B4B4B] font-body mb-8 max-w-3xl"
               style={{ fontSize: '20px', fontWeight: 400, lineHeight: '1.7' }}
             >
               {subtitle}
             </p>
 
             {/* Meta Row */}
-            <div className="flex flex-wrap items-center gap-6 mb-10 text-sm font-['Inter']">
+            <div className="flex flex-wrap items-center gap-6 mb-10 text-sm font-body">
               {maple.role && (
                 <div className="flex items-center gap-2">
                   <span className="text-[#7A7A7A]" style={{ fontSize: '13px', fontWeight: 400 }}>
@@ -261,7 +303,7 @@ export function ProjectMaple() {
               <a
                 href="/innovation_proposal.pdf"
                 download="Maple_Innovation_Proposal.pdf"
-                className="inline-flex items-center gap-2 px-6 h-12 rounded-lg bg-[#0B0B0C] text-white hover:bg-[#2A2A2C] transition-colors font-['Inter'] group"
+                className="inline-flex items-center gap-2 px-6 h-12 rounded-lg bg-[#0B0B0C] text-white hover:bg-[#2A2A2C] transition-colors font-body group"
                 style={{ fontSize: '15px', fontWeight: 500 }}
               >
                 <Download size={18} />
@@ -276,7 +318,7 @@ export function ProjectMaple() {
           <div className="max-w-5xl mx-auto space-y-8 pt-16">
 
           {/* Content before prototype image */}
-          <div className="prose prose-lg max-w-none">
+          <div className="prose prose-lg max-w-none font-body">
             {renderFormattedContent(beforePrototype, true)}
           </div>
 
@@ -290,7 +332,7 @@ export function ProjectMaple() {
           </div>
 
           {/* Content between prototype and persona */}
-          <div className="prose prose-lg max-w-none">
+          <div className="prose prose-lg max-w-none font-body">
             {renderFormattedContent(betweenPrototypeAndPersona)}
           </div>
 
@@ -304,7 +346,7 @@ export function ProjectMaple() {
           </div>
 
           {/* Content between persona and streetview */}
-          <div className="prose prose-lg max-w-none">
+          <div className="prose prose-lg max-w-none font-body">
             {renderFormattedContent(betweenPersonaAndStreet)}
           </div>
 
@@ -318,7 +360,7 @@ export function ProjectMaple() {
           </div>
 
           {/* Content after all images */}
-          <div className="prose prose-lg max-w-none">
+          <div className="prose prose-lg max-w-none font-body">
             {renderFormattedContent(afterAllImages)}
           </div>
           </div>

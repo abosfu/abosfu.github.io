@@ -1,10 +1,21 @@
 import { ProjectSlideshow } from '@/app/components/ProjectSlideshow';
+import { ProjectSideNav } from '@/app/components/ProjectSideNav';
 import { trajectoryCaseStudy, projectsData } from '@/data/projects';
 import { Github, ArrowLeft, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
 
 const trajectory = projectsData.find(p => p.id === 'trajectory')!;
+
+const TRAJECTORY_SECTIONS = [
+  { id: 'trajectory-problem', label: 'Problem' },
+  { id: 'trajectory-solution', label: 'Solution' },
+  { id: 'trajectory-how-it-works', label: 'How it Works' },
+  { id: 'trajectory-features', label: 'Features' },
+  { id: 'trajectory-architecture', label: 'Architecture' },
+  { id: 'trajectory-learnings', label: 'What I Learned' },
+  { id: 'trajectory-next', label: 'Next Improvements' },
+];
 
 export function ProjectTrajectory() {
   const handleCopyEmail = () => {
@@ -20,15 +31,16 @@ export function ProjectTrajectory() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F4F4F4]">
-      <main className="pt-24">
+    <div className="min-h-screen bg-[#F4F4F4] font-body">
+      <ProjectSideNav sections={TRAJECTORY_SECTIONS} />
+      <main className="pt-24 xl:ml-52">
         {/* Hero Section */}
         <section className="py-24 px-6 lg:px-12">
           <div className="max-w-7xl mx-auto">
             {/* Back Button */}
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-[#4B4B4B] hover:text-[#0B0B0C] transition-colors font-['Inter'] mb-12 group"
+              className="inline-flex items-center gap-2 text-[#4B4B4B] hover:text-[#0B0B0C] transition-colors font-body mb-12 group"
               style={{ fontSize: '15px', fontWeight: 500 }}
             >
               <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
@@ -37,22 +49,22 @@ export function ProjectTrajectory() {
 
             {/* Title */}
             <h1
-              className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight mb-6"
-              style={{ fontSize: 'clamp(48px, 8vw, 72px)', fontWeight: 700, lineHeight: '1.1' }}
+              className="text-[#0B0B0C] font-heading mb-6"
+              style={{ fontSize: 'clamp(40px, 7vw, 64px)', fontWeight: 600, lineHeight: '1.15' }}
             >
               {trajectory.title}
             </h1>
 
             {/* One-liner */}
             <p
-              className="text-[#4B4B4B] font-['Inter'] mb-8 max-w-3xl"
+              className="text-[#4B4B4B] font-body mb-8 max-w-3xl"
               style={{ fontSize: '20px', fontWeight: 400, lineHeight: '1.7' }}
             >
               {trajectoryCaseStudy.heroSubtitle}
             </p>
 
             {/* Meta Row */}
-            <div className="flex flex-wrap items-center gap-6 mb-10 text-sm font-['Inter']">
+            <div className="flex flex-wrap items-center gap-6 mb-10 text-sm font-body">
               {trajectory.role && (
                 <div className="flex items-center gap-2">
                   <span className="text-[#7A7A7A]" style={{ fontSize: '13px', fontWeight: 400 }}>
@@ -100,7 +112,7 @@ export function ProjectTrajectory() {
                   href={trajectory.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 h-12 rounded-lg bg-[#0B0B0C] text-white hover:bg-[#2A2A2C] transition-colors font-['Inter'] group"
+                  className="inline-flex items-center gap-2 px-6 h-12 rounded-lg bg-[#0B0B0C] text-white hover:bg-[#2A2A2C] transition-colors font-body group"
                   style={{ fontSize: '15px', fontWeight: 500 }}
                 >
                   <Github size={18} />
@@ -110,7 +122,7 @@ export function ProjectTrajectory() {
               <button
                 type="button"
                 onClick={() => scrollToSection('trajectory-how-it-works')}
-                className="inline-flex items-center gap-2 px-4 h-11 rounded-lg border border-[#E6E6E6] text-[#0B0B0C] hover:bg-[#FAFAFA] transition-colors font-['Inter'] group"
+                className="inline-flex items-center gap-2 px-4 h-11 rounded-lg border border-[#E6E6E6] text-[#0B0B0C] hover:bg-[#FAFAFA] transition-colors font-body group"
                 style={{ fontSize: '14px', fontWeight: 500 }}
               >
                 <span>Jump to How it Works</span>
@@ -124,13 +136,13 @@ export function ProjectTrajectory() {
           <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 items-start">
             <div className="flex-1 max-w-3xl">
               <h2
-                className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight uppercase mb-4"
+                className="text-[#0B0B0C] font-heading tracking-tight uppercase mb-4"
                 style={{ fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 500, lineHeight: '1.1', letterSpacing: '0.05em' }}
               >
                 Problem
               </h2>
               <p
-                className="text-[#4B4B4B] font-['Inter'] mb-6"
+                className="text-[#4B4B4B] font-body mb-6"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 {trajectoryCaseStudy.problemIntro}
@@ -142,7 +154,7 @@ export function ProjectTrajectory() {
                       •
                     </span>
                     <p
-                      className="text-[#4B4B4B] font-['Inter'] flex-1"
+                      className="text-[#4B4B4B] font-body flex-1"
                       style={{ fontSize: '16px', fontWeight: 400, lineHeight: '1.7' }}
                     >
                       {item}
@@ -170,7 +182,7 @@ export function ProjectTrajectory() {
           <div className="max-w-7xl mx-auto flex flex-col lg:flex-row-reverse gap-12 items-start">
             <div className="flex-1 max-w-3xl">
               <h2
-                className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight uppercase mb-4"
+                className="text-[#0B0B0C] font-heading tracking-tight uppercase mb-4"
                 style={{ fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 500, lineHeight: '1.1', letterSpacing: '0.05em' }}
               >
                 Solution
@@ -182,7 +194,7 @@ export function ProjectTrajectory() {
                       •
                     </span>
                     <p
-                      className="text-[#4B4B4B] font-['Inter'] flex-1"
+                      className="text-[#4B4B4B] font-body flex-1"
                       style={{ fontSize: '16px', fontWeight: 400, lineHeight: '1.7' }}
                     >
                       {item}
@@ -212,7 +224,7 @@ export function ProjectTrajectory() {
         >
           <div className="max-w-7xl mx-auto">
             <h2
-              className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight uppercase mb-10 text-center"
+              className="text-[#0B0B0C] font-heading tracking-tight uppercase mb-10 text-center"
               style={{ fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 500, lineHeight: '1.1', letterSpacing: '0.05em' }}
             >
               How it Works
@@ -224,20 +236,20 @@ export function ProjectTrajectory() {
                   {trajectoryCaseStudy.steps.map((step) => (
                     <li key={step.number} className="flex items-start gap-4">
                       <div
-                        className="w-7 h-7 rounded-full bg-[#0B0B0C] text-white flex items-center justify-center font-['Space_Grotesk']"
+                        className="w-7 h-7 rounded-full bg-[#0B0B0C] text-white flex items-center justify-center font-heading"
                         style={{ fontSize: '13px', fontWeight: 600 }}
                       >
                         {step.number}
                       </div>
                       <div>
                         <h3
-                          className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight mb-1"
+                          className="text-[#0B0B0C] font-heading tracking-tight mb-1"
                           style={{ fontSize: '18px', fontWeight: 600, lineHeight: '1.2' }}
                         >
                           {step.title}
                         </h3>
                         <p
-                          className="text-[#4B4B4B] font-['Inter']"
+                          className="text-[#4B4B4B] font-body"
                           style={{ fontSize: '15px', fontWeight: 400, lineHeight: '1.7' }}
                         >
                           {step.description}
@@ -264,7 +276,7 @@ export function ProjectTrajectory() {
         >
           <div className="max-w-7xl mx-auto">
             <h2
-              className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight uppercase mb-12 text-center"
+              className="text-[#0B0B0C] font-heading tracking-tight uppercase mb-12 text-center"
               style={{ fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 500, lineHeight: '1.1', letterSpacing: '0.05em' }}
             >
               Key Features
@@ -274,7 +286,7 @@ export function ProjectTrajectory() {
                 <div key={index} className="flex items-start gap-3">
                   <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '18px' }}>•</span>
                   <p
-                    className="text-[#4B4B4B] font-['Inter'] flex-1"
+                    className="text-[#4B4B4B] font-body flex-1"
                     style={{ fontSize: '16px', fontWeight: 400, lineHeight: '1.7' }}
                   >
                     {feature}
@@ -292,7 +304,7 @@ export function ProjectTrajectory() {
         >
           <div className="max-w-7xl mx-auto">
             <h2
-              className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight uppercase mb-12 text-center"
+              className="text-[#0B0B0C] font-heading tracking-tight uppercase mb-12 text-center"
               style={{ fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 500, lineHeight: '1.1', letterSpacing: '0.05em' }}
             >
               Technical Architecture (At a Glance)
@@ -301,7 +313,7 @@ export function ProjectTrajectory() {
               {/* Frontend */}
               <div>
                 <h3
-                  className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight mb-4"
+                  className="text-[#0B0B0C] font-heading tracking-tight mb-4"
                   style={{ fontSize: '20px', fontWeight: 600, lineHeight: '1.2' }}
                 >
                   Frontend
@@ -311,7 +323,7 @@ export function ProjectTrajectory() {
                     <li key={index} className="flex items-start gap-3">
                       <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '16px' }}>•</span>
                       <p
-                        className="text-[#4B4B4B] font-['Inter'] flex-1"
+                        className="text-[#4B4B4B] font-body flex-1"
                         style={{ fontSize: '15px', fontWeight: 400, lineHeight: '1.7' }}
                       >
                         {item}
@@ -324,7 +336,7 @@ export function ProjectTrajectory() {
               {/* Backend & APIs */}
               <div>
                 <h3
-                  className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight mb-4"
+                  className="text-[#0B0B0C] font-heading tracking-tight mb-4"
                   style={{ fontSize: '20px', fontWeight: 600, lineHeight: '1.2' }}
                 >
                   Backend & APIs
@@ -334,7 +346,7 @@ export function ProjectTrajectory() {
                     <li key={index} className="flex items-start gap-3">
                       <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '16px' }}>•</span>
                       <p
-                        className="text-[#4B4B4B] font-['Inter'] flex-1"
+                        className="text-[#4B4B4B] font-body flex-1"
                         style={{ fontSize: '15px', fontWeight: 400, lineHeight: '1.7' }}
                       >
                         {item}
@@ -347,7 +359,7 @@ export function ProjectTrajectory() {
               {/* AI Integration */}
               <div>
                 <h3
-                  className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight mb-4"
+                  className="text-[#0B0B0C] font-heading tracking-tight mb-4"
                   style={{ fontSize: '20px', fontWeight: 600, lineHeight: '1.2' }}
                 >
                   AI Integration
@@ -361,7 +373,7 @@ export function ProjectTrajectory() {
                         {!isParent && !isNested && <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '16px' }}>•</span>}
                         {isParent && <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '16px' }}>•</span>}
                         <p
-                          className="text-[#4B4B4B] font-['Inter'] flex-1"
+                          className="text-[#4B4B4B] font-body flex-1"
                           style={{ fontSize: '15px', fontWeight: 400, lineHeight: '1.7' }}
                         >
                           {isNested ? item.trim().substring(1).trim() : item}
@@ -375,7 +387,7 @@ export function ProjectTrajectory() {
               {/* Data Sources & Ingestion */}
               <div>
                 <h3
-                  className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight mb-4"
+                  className="text-[#0B0B0C] font-heading tracking-tight mb-4"
                   style={{ fontSize: '20px', fontWeight: 600, lineHeight: '1.2' }}
                 >
                   Data Sources & Ingestion
@@ -385,7 +397,7 @@ export function ProjectTrajectory() {
                     <li key={index} className="flex items-start gap-3">
                       <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '16px' }}>•</span>
                       <p
-                        className="text-[#4B4B4B] font-['Inter'] flex-1"
+                        className="text-[#4B4B4B] font-body flex-1"
                         style={{ fontSize: '15px', fontWeight: 400, lineHeight: '1.7' }}
                       >
                         {item}
@@ -398,7 +410,7 @@ export function ProjectTrajectory() {
               {/* Database */}
               <div>
                 <h3
-                  className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight mb-4"
+                  className="text-[#0B0B0C] font-heading tracking-tight mb-4"
                   style={{ fontSize: '20px', fontWeight: 600, lineHeight: '1.2' }}
                 >
                   Database
@@ -408,7 +420,7 @@ export function ProjectTrajectory() {
                     <li key={index} className="flex items-start gap-3">
                       <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '16px' }}>•</span>
                       <p
-                        className="text-[#4B4B4B] font-['Inter'] flex-1"
+                        className="text-[#4B4B4B] font-body flex-1"
                         style={{ fontSize: '15px', fontWeight: 400, lineHeight: '1.7' }}
                       >
                         {item}
@@ -421,7 +433,7 @@ export function ProjectTrajectory() {
               {/* Deployment */}
               <div>
                 <h3
-                  className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight mb-4"
+                  className="text-[#0B0B0C] font-heading tracking-tight mb-4"
                   style={{ fontSize: '20px', fontWeight: 600, lineHeight: '1.2' }}
                 >
                   Deployment
@@ -431,7 +443,7 @@ export function ProjectTrajectory() {
                     <li key={index} className="flex items-start gap-3">
                       <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '16px' }}>•</span>
                       <p
-                        className="text-[#4B4B4B] font-['Inter'] flex-1"
+                        className="text-[#4B4B4B] font-body flex-1"
                         style={{ fontSize: '15px', fontWeight: 400, lineHeight: '1.7' }}
                       >
                         {item}
@@ -451,7 +463,7 @@ export function ProjectTrajectory() {
               {/* What I Learned */}
               <div id="trajectory-learnings">
                 <h2
-                  className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight uppercase mb-6"
+                  className="text-[#0B0B0C] font-heading tracking-tight uppercase mb-6"
                   style={{ fontSize: 'clamp(24px, 3vw, 32px)', fontWeight: 500, lineHeight: '1.1', letterSpacing: '0.05em' }}
                 >
                   What I Learned
@@ -461,7 +473,7 @@ export function ProjectTrajectory() {
                     <li key={index} className="flex items-start gap-3">
                       <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '16px' }}>•</span>
                       <p
-                        className="text-[#4B4B4B] font-['Inter'] flex-1"
+                        className="text-[#4B4B4B] font-body flex-1"
                         style={{ fontSize: '16px', fontWeight: 400, lineHeight: '1.7' }}
                       >
                         {item}
@@ -474,7 +486,7 @@ export function ProjectTrajectory() {
               {/* Next Improvements */}
               <div id="trajectory-next">
                 <h2
-                  className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight uppercase mb-6"
+                  className="text-[#0B0B0C] font-heading tracking-tight uppercase mb-6"
                   style={{ fontSize: 'clamp(24px, 3vw, 32px)', fontWeight: 500, lineHeight: '1.1', letterSpacing: '0.05em' }}
                 >
                   Next Improvements
@@ -484,7 +496,7 @@ export function ProjectTrajectory() {
                     <li key={index} className="flex items-start gap-3">
                       <span className="text-[#0B0B0C] mt-1" style={{ fontSize: '16px' }}>•</span>
                       <p
-                        className="text-[#4B4B4B] font-['Inter'] flex-1"
+                        className="text-[#4B4B4B] font-body flex-1"
                         style={{ fontSize: '16px', fontWeight: 400, lineHeight: '1.7' }}
                       >
                         {item}
@@ -501,14 +513,14 @@ export function ProjectTrajectory() {
         <section className="py-24 px-6 lg:px-12 border-t border-[#E6E6E6]">
           <div className="max-w-7xl mx-auto text-center">
             <h2
-              className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight mb-4"
+              className="text-[#0B0B0C] font-heading tracking-tight mb-4"
               style={{ fontSize: 'clamp(32px, 5vw, 48px)', fontWeight: 600, lineHeight: '1.2' }}
             >
               Want to talk about Trajectory?
             </h2>
             <button
               onClick={handleCopyEmail}
-              className="inline-flex items-center gap-2 px-6 h-12 rounded-lg border border-[#E6E6E6] text-[#0B0B0C] hover:bg-[#FAFAFA] transition-colors font-['Inter'] mt-6"
+              className="inline-flex items-center gap-2 px-6 h-12 rounded-lg border border-[#E6E6E6] text-[#0B0B0C] hover:bg-[#FAFAFA] transition-colors font-body mt-6"
               style={{ fontSize: '15px', fontWeight: 500 }}
             >
               <Mail size={18} />

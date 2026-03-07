@@ -36,7 +36,7 @@ export function Community() {
                     {work.title}
                   </h3>
                   <p
-                    className="text-[#7A7A7A] font-['Inter']"
+                    className="text-[#7A7A7A] font-[var(--font-body)]"
                     style={{ fontSize: '14px', fontWeight: 500 }}
                   >
                     {work.role}
@@ -45,14 +45,14 @@ export function Community() {
 
                 {/* Description */}
                 <p
-                  className="text-[#4B4B4B] font-['Inter'] max-w-3xl"
+                  className="text-[#4B4B4B] font-[var(--font-body)] max-w-3xl"
                   style={{ fontSize: '16px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   {work.description}
                 </p>
 
                 {/* View Photos Button */}
-                <button className="flex items-center gap-2 px-4 h-10 rounded-lg border border-[#E6E6E6] text-[#0B0B0C] hover:bg-[#FAFAFA] transition-colors font-['Inter'] mt-4">
+                <button className="flex items-center gap-2 px-4 h-10 rounded-lg border border-[#E6E6E6] text-[#0B0B0C] hover:bg-[#FAFAFA] transition-colors font-[var(--font-body)] mt-4">
                   <ExternalLink size={16} />
                   <span style={{ fontSize: '14px', fontWeight: 500 }}>View Photos</span>
                 </button>

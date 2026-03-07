@@ -45,7 +45,7 @@ export const projectsData: ProjectData[] = [
     title: 'MarketScout',
     description: 'CLI AI Strategy Engine that turns live market signals into actionable AI adoption roadmaps.',
     tech: ['Python', 'Requests', 'Pydantic', 'Rich', 'JSON/Markdown/HTML', 'Disk Caching', 'Optional LLM (OpenAI/Claude)'],
-    githubUrl: '#',
+    githubUrl: 'https://github.com/abosfu/marketscout',
     category: 'AI / Automation',
     caseStudyRoute: '/projects/marketscout',
     slides: [
@@ -59,7 +59,7 @@ export const projectsData: ProjectData[] = [
     title: 'FightMatch',
     description: 'Data-Driven Fight Matchmaking & Ranking Analysis Engine',
     tech: ['Python', 'BeautifulSoup', 'Requests', 'Pydantic', 'Pytest', 'JSON Reports', 'CLI Pipeline'],
-    githubUrl: '#',
+    githubUrl: 'https://github.com/abosfu/fightmatch',
     category: 'Data Systems',
     caseStudyRoute: '/projects/fightmatch',
     macbookImage: '/images/fightmatch/fightmatch.png',

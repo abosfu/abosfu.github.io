@@ -2,11 +2,21 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { projectsData } from '@/data/projects';
 import { ProjectSlideshow } from '@/app/components/ProjectSlideshow';
+import { ProjectSideNav } from '@/app/components/ProjectSideNav';
 
 const marketscout = projectsData.find(p => p.id === 'marketscout')!;
 
+const MARKET_SCOUT_SECTIONS = [
+  { id: 'what-marketscout-does', label: 'What MarketScout Does' },
+  { id: 'how-it-works', label: 'How the System Works' },
+  { id: 'example-runs', label: 'Example Runs' },
+  { id: 'technical-design', label: 'Technical Design' },
+  { id: 'why-this-project', label: 'Why This Project Exists' },
+  { id: 'how-to-run', label: 'How to Run the Project' },
+];
+
 const sectionHeading =
-  "text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight uppercase mb-4";
+  "text-[#0B0B0C] font-heading tracking-tight uppercase mb-4";
 const sectionHeadingStyle = {
   fontSize: 'clamp(22px, 2.5vw, 28px)',
   fontWeight: 500,
@@ -15,7 +25,7 @@ const sectionHeadingStyle = {
 };
 const subHeadingStyle = { fontSize: '18px', fontWeight: 600, lineHeight: '1.3' as const };
 const bodyStyle = { fontSize: '18px', fontWeight: 400, lineHeight: '1.7' as const };
-const bodyClass = "text-[#4B4B4B] font-['Inter']";
+const bodyClass = "text-[#4B4B4B] font-body";
 
 const IMG1 = '/images/marketscout/1.png';
 const IMG2 = '/images/marketscout/2.png';
@@ -23,14 +33,15 @@ const IMG3 = '/images/marketscout/3.png.png';
 
 export function ProjectMarketScout() {
   return (
-    <div className="min-h-screen bg-[#F4F4F4]">
-      <main className="pt-24">
+    <div className="min-h-screen bg-[#F4F4F4] font-body">
+      <ProjectSideNav sections={MARKET_SCOUT_SECTIONS} />
+      <main className="pt-24 xl:ml-52">
         {/* Hero Section */}
         <section className="py-24 px-6 lg:px-12">
           <div className="max-w-7xl mx-auto">
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-[#4B4B4B] hover:text-[#0B0B0C] transition-colors font-['Inter'] mb-12 group"
+              className="inline-flex items-center gap-2 text-[#4B4B4B] hover:text-[#0B0B0C] transition-colors font-body mb-12 group"
               style={{ fontSize: '15px', fontWeight: 500 }}
             >
               <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
@@ -39,7 +50,7 @@ export function ProjectMarketScout() {
 
             {marketscout.category && (
               <p
-                className="text-[#7A7A7A] font-['Inter'] uppercase tracking-wide mb-3"
+                className="text-[#7A7A7A] font-body uppercase tracking-wide mb-3"
                 style={{ fontSize: '12px', fontWeight: 400, letterSpacing: '0.1em' }}
               >
                 {marketscout.category}
@@ -47,8 +58,8 @@ export function ProjectMarketScout() {
             )}
 
             <h1
-              className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight mb-4"
-              style={{ fontSize: 'clamp(48px, 8vw, 72px)', fontWeight: 700, lineHeight: '1.1' }}
+              className="text-[#0B0B0C] font-heading mb-4"
+              style={{ fontSize: 'clamp(40px, 7vw, 64px)', fontWeight: 600, lineHeight: '1.15' }}
             >
               {marketscout.title}
             </h1>
@@ -60,7 +71,7 @@ export function ProjectMarketScout() {
               {marketscout.description}
             </p>
 
-            <div className="flex flex-wrap items-center gap-3 mb-10 text-sm font-['Inter']">
+            <div className="flex flex-wrap items-center gap-3 mb-10 text-sm font-body">
               <span className="text-[#7A7A7A]" style={{ fontSize: '13px', fontWeight: 400 }}>
                 Skills
               </span>
@@ -81,10 +92,10 @@ export function ProjectMarketScout() {
         {/* Case Study Body — Expandable Section Content */}
         <section className="pb-24 px-6 lg:px-12 border-t border-[#E6E6E6]">
           <div className="max-w-5xl mx-auto space-y-12 pt-16">
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
             {/* What MarketScout Does */}
-            <div className="space-y-4">
+            <div id="what-marketscout-does" className="space-y-4">
               <h2 className={sectionHeading} style={sectionHeadingStyle}>What MarketScout Does</h2>
               <p className={bodyClass} style={bodyStyle}>
                 MarketScout is a CLI strategy engine that analyzes real-world market signals and converts them into structured business opportunities.
@@ -122,16 +133,16 @@ export function ProjectMarketScout() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
             {/* How the System Works */}
-            <div className="space-y-4">
+            <div id="how-it-works" className="space-y-4">
               <h2 className={sectionHeading} style={sectionHeadingStyle}>How the System Works</h2>
               <p className={bodyClass} style={bodyStyle}>
                 MarketScout runs through a structured pipeline designed for transparency and reproducibility.
               </p>
 
-              <p className="text-[#0B0B0C] font-['Space_Grotesk']" style={subHeadingStyle}>1. Signal Collection</p>
+              <p className="text-[#0B0B0C] font-heading" style={subHeadingStyle}>1. Signal Collection</p>
               <p className={bodyClass} style={bodyStyle}>
                 The system fetches live signals from two sources:
               </p>
@@ -154,10 +165,10 @@ export function ProjectMarketScout() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
             <div className="space-y-4">
-              <p className="text-[#0B0B0C] font-['Space_Grotesk']" style={subHeadingStyle}>2. Opportunity Detection</p>
+              <p className="text-[#0B0B0C] font-heading" style={subHeadingStyle}>2. Opportunity Detection</p>
               <p className={bodyClass} style={bodyStyle}>
                 The signals are analyzed using industry templates that map keywords to operational bottlenecks.
               </p>
@@ -176,10 +187,10 @@ export function ProjectMarketScout() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
             <div className="space-y-4">
-              <p className="text-[#0B0B0C] font-['Space_Grotesk']" style={subHeadingStyle}>3. Opportunity Scoring</p>
+              <p className="text-[#0B0B0C] font-heading" style={subHeadingStyle}>3. Opportunity Scoring</p>
               <p className={bodyClass} style={bodyStyle}>
                 Each opportunity receives several metrics:
               </p>
@@ -194,10 +205,10 @@ export function ProjectMarketScout() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
             <div className="space-y-4">
-              <p className="text-[#0B0B0C] font-['Space_Grotesk']" style={subHeadingStyle}>4. Artifact Generation</p>
+              <p className="text-[#0B0B0C] font-heading" style={subHeadingStyle}>4. Artifact Generation</p>
               <p className={bodyClass} style={bodyStyle}>
                 Each run produces structured outputs:
               </p>
@@ -214,22 +225,22 @@ export function ProjectMarketScout() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
             {/* Example Runs */}
-            <div className="space-y-6">
+            <div id="example-runs" className="space-y-6">
               <h2 className={sectionHeading} style={sectionHeadingStyle}>Example Runs</h2>
 
             {/* Example 1 — Construction: full-width screenshot */}
             <div className="space-y-4">
-              <h3 className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight mb-3" style={{ fontSize: '20px', fontWeight: 600 }}>Construction — Vancouver</h3>
+              <h3 className="text-[#0B0B0C] font-heading tracking-tight mb-3" style={{ fontSize: '20px', fontWeight: 600 }}>Construction — Vancouver</h3>
               <div className="w-full max-w-4xl mx-auto">
                 <img
                   src={IMG1}
                   alt="Construction opportunity map generated from Vancouver market signals."
                   className="w-full h-auto"
                 />
-                <p className="text-[#7A7A7A] font-['Inter'] mt-4 text-center" style={{ fontSize: '14px', fontWeight: 400, lineHeight: '1.5' }}>
+                <p className="text-[#7A7A7A] font-body mt-4 text-center" style={{ fontSize: '14px', fontWeight: 400, lineHeight: '1.5' }}>
                   Construction opportunity map generated from Vancouver market signals.
                 </p>
               </div>
@@ -256,11 +267,11 @@ export function ProjectMarketScout() {
             </div>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
             {/* Example 2 — Real Estate: two-column left image, right text */}
             <div className="space-y-4 pt-4">
-              <h3 className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight mb-3" style={{ fontSize: '20px', fontWeight: 600 }}>Real Estate — Vancouver</h3>
+              <h3 className="text-[#0B0B0C] font-heading tracking-tight mb-3" style={{ fontSize: '20px', fontWeight: 600 }}>Real Estate — Vancouver</h3>
               <div className="flex flex-col lg:flex-row gap-8 items-start">
                 <div className="w-full lg:w-1/2 flex-shrink-0 flex flex-col items-center lg:items-start">
                   <img
@@ -268,7 +279,7 @@ export function ProjectMarketScout() {
                     alt="Real estate opportunity map generated from Vancouver market signals."
                     className="w-full h-auto"
                   />
-                  <p className="text-[#7A7A7A] font-['Inter'] mt-4 lg:text-left text-center" style={{ fontSize: '14px', fontWeight: 400, lineHeight: '1.5' }}>
+                  <p className="text-[#7A7A7A] font-body mt-4 lg:text-left text-center" style={{ fontSize: '14px', fontWeight: 400, lineHeight: '1.5' }}>
                     Real estate opportunity map generated from Vancouver market signals.
                   </p>
                 </div>
@@ -297,11 +308,11 @@ export function ProjectMarketScout() {
               </div>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
             {/* Example 3 — Retail: two-column left text, right image */}
             <div className="space-y-4 pt-4">
-              <h3 className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight mb-3" style={{ fontSize: '20px', fontWeight: 600 }}>Retail — Toronto</h3>
+              <h3 className="text-[#0B0B0C] font-heading tracking-tight mb-3" style={{ fontSize: '20px', fontWeight: 600 }}>Retail — Toronto</h3>
               <div className="flex flex-col lg:flex-row lg:flex-row-reverse gap-8 items-start">
                 <div className="w-full lg:w-1/2 flex-shrink-0 flex flex-col items-center lg:items-end">
                   <img
@@ -309,7 +320,7 @@ export function ProjectMarketScout() {
                     alt="Retail opportunity map generated from Toronto market signals."
                     className="w-full h-auto"
                   />
-                  <p className="text-[#7A7A7A] font-['Inter'] mt-4 lg:text-right text-center" style={{ fontSize: '14px', fontWeight: 400, lineHeight: '1.5' }}>
+                  <p className="text-[#7A7A7A] font-body mt-4 lg:text-right text-center" style={{ fontSize: '14px', fontWeight: 400, lineHeight: '1.5' }}>
                     Retail opportunity map generated from Toronto market signals.
                   </p>
                 </div>
@@ -336,17 +347,17 @@ export function ProjectMarketScout() {
               </div>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
             {/* Technical Design */}
-            <div className="space-y-4">
+            <div id="technical-design" className="space-y-4">
               <h2 className={sectionHeading} style={sectionHeadingStyle}>Technical Design</h2>
               <p className={bodyClass} style={bodyStyle}>
                 The project is intentionally built as a CLI-first system rather than a web dashboard.
               </p>
               <p className={bodyClass} style={bodyStyle}>Key design principles include:</p>
 
-              <p className="text-[#0B0B0C] font-['Space_Grotesk'] mt-4" style={subHeadingStyle}>Deterministic Mode</p>
+              <p className="text-[#0B0B0C] font-heading mt-4" style={subHeadingStyle}>Deterministic Mode</p>
               <p className={bodyClass} style={bodyStyle}>
                 Runs can be reproduced using:
               </p>
@@ -355,7 +366,7 @@ export function ProjectMarketScout() {
                 This ensures identical outputs when testing or demonstrating the tool.
               </p>
 
-              <p className="text-[#0B0B0C] font-['Space_Grotesk'] mt-4" style={subHeadingStyle}>Evidence-Based Strategy Generation</p>
+              <p className="text-[#0B0B0C] font-heading mt-4" style={subHeadingStyle}>Evidence-Based Strategy Generation</p>
               <p className={bodyClass} style={bodyStyle}>
                 The system tracks which signals produced each opportunity.
               </p>
@@ -363,7 +374,7 @@ export function ProjectMarketScout() {
                 An evaluation step verifies that evidence links come from the input signals so insights stay grounded in the data.
               </p>
 
-              <p className="text-[#0B0B0C] font-['Space_Grotesk'] mt-4" style={subHeadingStyle}>Transparent Data Quality Metrics</p>
+              <p className="text-[#0B0B0C] font-heading mt-4" style={subHeadingStyle}>Transparent Data Quality Metrics</p>
               <p className={bodyClass} style={bodyStyle}>
                 Each run reports:
               </p>
@@ -376,7 +387,7 @@ export function ProjectMarketScout() {
                 These metrics help users understand the reliability of the generated opportunity map.
               </p>
 
-              <p className="text-[#0B0B0C] font-['Space_Grotesk'] mt-4" style={subHeadingStyle}>Modular Architecture</p>
+              <p className="text-[#0B0B0C] font-heading mt-4" style={subHeadingStyle}>Modular Architecture</p>
               <p className={bodyClass} style={bodyStyle}>
                 The project is structured around several core modules:
               </p>
@@ -401,10 +412,10 @@ export function ProjectMarketScout() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter'] mt-8" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body mt-8" style={bodyStyle}>⸻</p>
 
             {/* Why This Project Exists */}
-            <div className="space-y-4">
+            <div id="why-this-project" className="space-y-4">
               <h2 className={sectionHeading} style={sectionHeadingStyle}>Why This Project Exists</h2>
               <p className={bodyClass} style={bodyStyle}>
                 Market research is often fragmented across news sources, hiring data, and industry reports.
@@ -417,10 +428,10 @@ export function ProjectMarketScout() {
               </p>
             </div>
 
-            <p className="text-[#B3B3B3] font-['Inter']" style={bodyStyle}>⸻</p>
+            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
             {/* How to Run the Project */}
-            <div className="space-y-4">
+            <div id="how-to-run" className="space-y-4">
               <h2 className={sectionHeading} style={sectionHeadingStyle}>How to Run the Project</h2>
               <p className={bodyClass} style={bodyStyle}>Example command:</p>
               <pre className="bg-[#F9F9F9] border border-[#E6E6E6] rounded-xl p-4 overflow-x-auto text-sm font-mono text-[#0B0B0C]">

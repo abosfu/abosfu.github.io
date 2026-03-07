@@ -8,24 +8,13 @@ export function Contact({ onCopyEmail }: ContactProps) {
   return (
     <section id="contact" className="relative py-32 px-6 lg:px-12 bg-[#F4F4F4]">
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section Header */}
-        <div className="mb-16 text-center">
-          <h2
-            className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight uppercase"
-            style={{ fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 500, lineHeight: '1.1', letterSpacing: '0.05em' }}
-          >
-            Contact
-          </h2>
-        </div>
-
-        {/* Simple Contact Links */}
         <div className="space-y-6">
           {/* Email */}
-          <div className="flex items-center gap-4">
-            <Mail size={20} className="text-[#4B4B4B]" />
+          <div className="flex items-center gap-4 group/contact">
+            <Mail size={20} className="text-[#4B4B4B] group-hover/contact:text-[var(--accent-site)] transition-colors" />
             <button
               onClick={onCopyEmail}
-              className="text-[#0B0B0C] hover:text-[#4B4B4B] transition-colors font-['Inter'] text-left"
+              className="text-[#0B0B0C] hover:text-[var(--accent-site)] transition-colors font-[var(--font-body)] text-left"
               style={{ fontSize: '18px', fontWeight: 400 }}
             >
               abo4@sfu.ca
@@ -33,13 +22,13 @@ export function Contact({ onCopyEmail }: ContactProps) {
           </div>
 
           {/* GitHub */}
-          <div className="flex items-center gap-4">
-            <Github size={20} className="text-[#4B4B4B]" />
+          <div className="flex items-center gap-4 group/contact">
+            <Github size={20} className="text-[#4B4B4B] group-hover/contact:text-[var(--accent-site)] transition-colors" />
             <a
               href="https://github.com/abosfu"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#0B0B0C] hover:text-[#4B4B4B] transition-colors font-['Inter']"
+              className="text-[#0B0B0C] hover:text-[var(--accent-site)] transition-colors font-[var(--font-body)]"
               style={{ fontSize: '18px', fontWeight: 400 }}
             >
               GitHub
@@ -47,13 +36,13 @@ export function Contact({ onCopyEmail }: ContactProps) {
           </div>
 
           {/* LinkedIn */}
-          <div className="flex items-center gap-4">
-            <Linkedin size={20} className="text-[#4B4B4B]" />
+          <div className="flex items-center gap-4 group/contact">
+            <Linkedin size={20} className="text-[#4B4B4B] group-hover/contact:text-[var(--accent-site)] transition-colors" />
             <a
               href="https://www.linkedin.com/in/abdullah-bin-omer-619124230/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#0B0B0C] hover:text-[#4B4B4B] transition-colors font-['Inter']"
+              className="text-[#0B0B0C] hover:text-[var(--accent-site)] transition-colors font-[var(--font-body)]"
               style={{ fontSize: '18px', fontWeight: 400 }}
             >
               LinkedIn
@@ -64,7 +53,7 @@ export function Contact({ onCopyEmail }: ContactProps) {
         {/* Footer */}
         <div className="mt-24 pt-12 border-t border-[#E6E6E6]">
           <p
-            className="text-[#7A7A7A] font-['Inter'] text-center"
+            className="text-[#7A7A7A] font-[var(--font-body)] text-center"
             style={{ fontSize: '14px', fontWeight: 400 }}
           >
             © 2026 Abdullah Bin Omer. All rights reserved.

@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from '@/app/components/Navbar';
 import { Hero } from '@/app/components/Hero';
-import { About } from '@/app/components/About';
 import { Projects } from '@/app/components/Projects';
 import { Contact } from '@/app/components/Contact';
 import { ProjectTrajectory } from '@/app/pages/ProjectTrajectory';
@@ -23,12 +22,12 @@ function ScrollToTop() {
   return null;
 }
 
-function Home() {
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText('abo4@sfu.ca');
-    toast.success('Email copied to clipboard!');
-  };
+const handleCopyEmail = () => {
+  navigator.clipboard.writeText('abo4@sfu.ca');
+  toast.success('Email copied to clipboard!');
+};
 
+function Home({ onCopyEmail }: { onCopyEmail: () => void }) {
   const scrollToProjects = () => {
     const element = document.getElementById('projects');
     if (element) {
@@ -38,27 +37,26 @@ function Home() {
 
   return (
     <>
-      <Hero onViewProjects={scrollToProjects} onCopyEmail={handleCopyEmail} />
-      <About />
+      <Hero onViewProjects={scrollToProjects} onCopyEmail={onCopyEmail} />
       <Projects />
-      <Contact onCopyEmail={handleCopyEmail} />
+      <Contact onCopyEmail={onCopyEmail} />
     </>
   );
 }
 
-function AppShell() {
+function AppShell({ onCopyEmail }: { onCopyEmail: () => void }) {
   return (
     <div className="min-h-screen bg-[#F4F4F4]">
       {/* Toaster for notifications */}
       <Toaster position="bottom-right" />
 
       {/* Navigation */}
-      <Navbar />
+      <Navbar onCopyEmail={onCopyEmail} />
 
       {/* Main Content */}
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home onCopyEmail={handleCopyEmail} />} />
           <Route path="/projects/lead-scorer" element={<ProjectLeadScorer />} />
           <Route path="/projects/marketscout" element={<ProjectMarketScout />} />
           <Route path="/projects/fightmatch" element={<ProjectFightMatch />} />
@@ -74,7 +72,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <AppShell />
+      <AppShell onCopyEmail={handleCopyEmail} />
     </BrowserRouter>
   );
 }

@@ -2,20 +2,37 @@ import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { projectsData } from '@/data/projects';
+import { ProjectSideNav } from '@/app/components/ProjectSideNav';
 
 const leadScorer = projectsData.find(p => p.id === 'lead-scorer')!;
 
+const LEAD_SCORER_SECTIONS = [
+  { id: 'lead-scorer-intro', label: 'Lead Scorer' },
+  { id: 'skills-technologies', label: 'Skills & Technologies' },
+  { id: 'learn-more', label: 'Learn More' },
+  { id: 'research-design', label: 'Research & Design' },
+  { id: 'dataset-design', label: 'Dataset Design' },
+  { id: 'synthetic-data', label: 'Synthetic Data Generation' },
+  { id: 'labeling-strategy', label: 'Labeling Strategy' },
+  { id: 'ml-pipeline', label: 'ML Pipeline' },
+  { id: 'system-architecture', label: 'System Architecture' },
+  { id: 'results', label: 'Results' },
+  { id: 'future-improvements', label: 'Future Improvements' },
+  { id: 'project-outcome', label: 'Project Outcome' },
+];
+
 export function ProjectLeadScorer() {
   return (
-    <div className="min-h-screen bg-[#F4F4F4]">
-      <main className="pt-24">
+    <div className="min-h-screen bg-[#F4F4F4] font-body">
+      <ProjectSideNav sections={LEAD_SCORER_SECTIONS} />
+      <main className="pt-24 xl:ml-52">
         {/* Hero Section */}
         <section className="py-24 px-6 lg:px-12">
           <div className="max-w-7xl mx-auto">
             {/* Back Button */}
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-[#4B4B4B] hover:text-[#0B0B0C] transition-colors font-['Inter'] mb-12 group"
+              className="inline-flex items-center gap-2 text-[#4B4B4B] hover:text-[#0B0B0C] transition-colors font-body mb-12 group"
               style={{ fontSize: '15px', fontWeight: 500 }}
             >
               <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
@@ -25,7 +42,7 @@ export function ProjectLeadScorer() {
             {/* Category */}
             {leadScorer.category && (
               <p
-                className="text-[#7A7A7A] font-['Inter'] uppercase tracking-wide mb-3"
+                className="text-[#7A7A7A] font-body uppercase tracking-wide mb-3"
                 style={{ fontSize: '12px', fontWeight: 400, letterSpacing: '0.1em' }}
               >
                 {leadScorer.category}
@@ -34,22 +51,22 @@ export function ProjectLeadScorer() {
 
             {/* Title */}
             <h1
-              className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight mb-4"
-              style={{ fontSize: 'clamp(48px, 8vw, 72px)', fontWeight: 700, lineHeight: '1.1' }}
+              className="text-[#0B0B0C] font-heading mb-4"
+              style={{ fontSize: 'clamp(40px, 7vw, 64px)', fontWeight: 600, lineHeight: '1.15' }}
             >
               {leadScorer.title}
             </h1>
 
             {/* Subtitle */}
             <p
-              className="text-[#4B4B4B] font-['Inter'] mb-6 max-w-3xl"
+              className="text-[#4B4B4B] font-body mb-6 max-w-3xl"
               style={{ fontSize: '20px', fontWeight: 400, lineHeight: '1.7' }}
             >
               {leadScorer.description}
             </p>
 
             {/* Tags / Tech Row */}
-            <div className="flex flex-wrap items-center gap-3 mb-2 text-sm font-['Inter']">
+            <div className="flex flex-wrap items-center gap-3 mb-2 text-sm font-body">
               <span className="text-[#7A7A7A]" style={{ fontSize: '13px', fontWeight: 400 }}>
                 Skills
               </span>
@@ -65,34 +82,34 @@ export function ProjectLeadScorer() {
           <div className="max-w-5xl mx-auto space-y-8 pt-16">
             {/* Separator */}
             <p
-              className="text-[#B3B3B3] font-['Inter']"
+              className="text-[#B3B3B3] font-body"
               style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
             >
               ⸻
             </p>
 
             {/* Lead Scorer Intro Block */}
-            <div className="space-y-4">
+            <div id="lead-scorer-intro" className="space-y-4">
               <h2
-                className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight"
+                className="text-[#0B0B0C] font-heading tracking-tight"
                 style={{ fontSize: '28px', fontWeight: 600, lineHeight: '1.2' }}
               >
                 Lead Scorer
               </h2>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 AI System for Prioritizing Business Opportunities
               </p>
               <p
-                className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight"
+                className="text-[#0B0B0C] font-heading tracking-tight"
                 style={{ fontSize: '20px', fontWeight: 600, lineHeight: '1.3' }}
               >
                 Front Page Description
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 Lead Scorer is a machine learning system designed to help sales teams prioritize business opportunities
@@ -101,7 +118,7 @@ export function ProjectLeadScorer() {
                 easier to convert but offer smaller returns.
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 Lead Scorer analyzes structured lead data — such as deal value, number of stakeholders, expected sales
@@ -110,14 +127,14 @@ export function ProjectLeadScorer() {
                 helping teams focus their time on the opportunities most likely to generate value.
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 The project demonstrates the full lifecycle of a machine learning system: dataset design, synthetic data
                 generation, preprocessing, model training, evaluation, and visualization.
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 The goal of the project was to explore how AI can support operational decision-making in sales pipelines
@@ -127,16 +144,16 @@ export function ProjectLeadScorer() {
 
             {/* Separator */}
             <p
-              className="text-[#B3B3B3] font-['Inter']"
+              className="text-[#B3B3B3] font-body"
               style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
             >
               ⸻
             </p>
 
             {/* Skills & Technologies */}
-            <div className="space-y-4">
+            <div id="skills-technologies" className="space-y-4">
               <h2
-                className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight"
+                className="text-[#0B0B0C] font-heading tracking-tight"
                 style={{ fontSize: '24px', fontWeight: 600, lineHeight: '1.2' }}
               >
                 Skills & Technologies
@@ -144,14 +161,14 @@ export function ProjectLeadScorer() {
 
               <div className="space-y-3">
                 <p
-                  className="text-[#0B0B0C] font-['Space_Grotesk']"
+                  className="text-[#0B0B0C] font-heading"
                   style={{ fontSize: '18px', fontWeight: 600, lineHeight: '1.4' }}
                 >
                   Programming
                 </p>
                 <ul className="space-y-1 ml-6 list-disc">
                   <li
-                    className="text-[#4B4B4B] font-['Inter']"
+                    className="text-[#4B4B4B] font-body"
                     style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                   >
                     Python
@@ -161,20 +178,20 @@ export function ProjectLeadScorer() {
 
               <div className="space-y-3">
                 <p
-                  className="text-[#0B0B0C] font-['Space_Grotesk']"
+                  className="text-[#0B0B0C] font-heading"
                   style={{ fontSize: '18px', fontWeight: 600, lineHeight: '1.4' }}
                 >
                   Machine Learning
                 </p>
                 <ul className="space-y-1 ml-6 list-disc">
                   <li
-                    className="text-[#4B4B4B] font-['Inter']"
+                    className="text-[#4B4B4B] font-body"
                     style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                   >
                     Scikit-learn
                   </li>
                   <li
-                    className="text-[#4B4B4B] font-['Inter']"
+                    className="text-[#4B4B4B] font-body"
                     style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                   >
                     Classification models (Logistic Regression, Decision Trees)
@@ -184,20 +201,20 @@ export function ProjectLeadScorer() {
 
               <div className="space-y-3">
                 <p
-                  className="text-[#0B0B0C] font-['Space_Grotesk']"
+                  className="text-[#0B0B0C] font-heading"
                   style={{ fontSize: '18px', fontWeight: 600, lineHeight: '1.4' }}
                 >
                   Data Processing
                 </p>
                 <ul className="space-y-1 ml-6 list-disc">
                   <li
-                    className="text-[#4B4B4B] font-['Inter']"
+                    className="text-[#4B4B4B] font-body"
                     style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                   >
                     NumPy
                   </li>
                   <li
-                    className="text-[#4B4B4B] font-['Inter']"
+                    className="text-[#4B4B4B] font-body"
                     style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                   >
                     Pandas
@@ -207,14 +224,14 @@ export function ProjectLeadScorer() {
 
               <div className="space-y-3">
                 <p
-                  className="text-[#0B0B0C] font-['Space_Grotesk']"
+                  className="text-[#0B0B0C] font-heading"
                   style={{ fontSize: '18px', fontWeight: 600, lineHeight: '1.4' }}
                 >
                   Data Visualization
                 </p>
                 <ul className="space-y-1 ml-6 list-disc">
                   <li
-                    className="text-[#4B4B4B] font-['Inter']"
+                    className="text-[#4B4B4B] font-body"
                     style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                   >
                     Matplotlib
@@ -224,26 +241,26 @@ export function ProjectLeadScorer() {
 
               <div className="space-y-3">
                 <p
-                  className="text-[#0B0B0C] font-['Space_Grotesk']"
+                  className="text-[#0B0B0C] font-heading"
                   style={{ fontSize: '18px', fontWeight: 600, lineHeight: '1.4' }}
                 >
                   Software Engineering
                 </p>
                 <ul className="space-y-1 ml-6 list-disc">
                   <li
-                    className="text-[#4B4B4B] font-['Inter']"
+                    className="text-[#4B4B4B] font-body"
                     style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                   >
                     Modular Python architecture
                   </li>
                   <li
-                    className="text-[#4B4B4B] font-['Inter']"
+                    className="text-[#4B4B4B] font-body"
                     style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                   >
                     Reproducible data pipelines
                   </li>
                   <li
-                    className="text-[#4B4B4B] font-['Inter']"
+                    className="text-[#4B4B4B] font-body"
                     style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                   >
                     CLI-based tools
@@ -253,38 +270,38 @@ export function ProjectLeadScorer() {
 
               <div className="space-y-3">
                 <p
-                  className="text-[#0B0B0C] font-['Space_Grotesk']"
+                  className="text-[#0B0B0C] font-heading"
                   style={{ fontSize: '18px', fontWeight: 600, lineHeight: '1.4' }}
                 >
                   Concepts
                 </p>
                 <ul className="space-y-1 ml-6 list-disc">
                   <li
-                    className="text-[#4B4B4B] font-['Inter']"
+                    className="text-[#4B4B4B] font-body"
                     style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                   >
                     Supervised learning
                   </li>
                   <li
-                    className="text-[#4B4B4B] font-['Inter']"
+                    className="text-[#4B4B4B] font-body"
                     style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                   >
                     Feature engineering
                   </li>
                   <li
-                    className="text-[#4B4B4B] font-['Inter']"
+                    className="text-[#4B4B4B] font-body"
                     style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                   >
                     Model evaluation
                   </li>
                   <li
-                    className="text-[#4B4B4B] font-['Inter']"
+                    className="text-[#4B4B4B] font-body"
                     style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                   >
                     Train/test splitting
                   </li>
                   <li
-                    className="text-[#4B4B4B] font-['Inter']"
+                    className="text-[#4B4B4B] font-body"
                     style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                   >
                     Synthetic data generation
@@ -295,28 +312,28 @@ export function ProjectLeadScorer() {
 
             {/* Separator */}
             <p
-              className="text-[#B3B3B3] font-['Inter']"
+              className="text-[#B3B3B3] font-body"
               style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
             >
               ⸻
             </p>
 
             {/* Learn More / Project Story */}
-            <div className="space-y-4">
+            <div id="learn-more" className="space-y-4">
               <h2
-                className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight"
+                className="text-[#0B0B0C] font-heading tracking-tight"
                 style={{ fontSize: '24px', fontWeight: 600, lineHeight: '1.2' }}
               >
                 Learn More
               </h2>
               <p
-                className="text-[#0B0B0C] font-['Space_Grotesk']"
+                className="text-[#0B0B0C] font-heading"
                 style={{ fontSize: '20px', fontWeight: 600, lineHeight: '1.3' }}
               >
                 Project Story
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 Sales teams often face a common problem: deciding which opportunities deserve the most attention. In a
@@ -324,7 +341,7 @@ export function ProjectLeadScorer() {
                 equally can waste time and resources.
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 This project explores how machine learning can assist with opportunity prioritization. Instead of relying
@@ -332,7 +349,7 @@ export function ProjectLeadScorer() {
                 lead and estimates its relative priority.
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 The system models the trade-offs that sales teams naturally consider when evaluating deals. Larger deals
@@ -340,14 +357,14 @@ export function ProjectLeadScorer() {
                 integration effort. Smaller deals may close quickly but offer less revenue potential.
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 Lead Scorer attempts to balance these factors by learning patterns in the data and predicting which
                 opportunities are most valuable to pursue.
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 The project was designed as an end-to-end machine learning pipeline that simulates a real-world CRM
@@ -357,28 +374,28 @@ export function ProjectLeadScorer() {
 
             {/* Separator */}
             <p
-              className="text-[#B3B3B3] font-['Inter']"
+              className="text-[#B3B3B3] font-body"
               style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
             >
               ⸻
             </p>
 
             {/* Research & Design Process / Problem Definition */}
-            <div className="space-y-4">
+            <div id="research-design" className="space-y-4">
               <h2
-                className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight"
+                className="text-[#0B0B0C] font-heading tracking-tight"
                 style={{ fontSize: '24px', fontWeight: 600, lineHeight: '1.2' }}
               >
                 Research &amp; Design Process
               </h2>
               <p
-                className="text-[#0B0B0C] font-['Space_Grotesk']"
+                className="text-[#0B0B0C] font-heading"
                 style={{ fontSize: '20px', fontWeight: 600, lineHeight: '1.3' }}
               >
                 Problem Definition
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 The first step was identifying a realistic business problem suitable for machine learning. Sales pipeline
@@ -386,7 +403,7 @@ export function ProjectLeadScorer() {
                 uncertainty.
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 The project focuses on predicting lead priority levels based on measurable attributes associated with each
@@ -396,73 +413,73 @@ export function ProjectLeadScorer() {
 
             {/* Separator */}
             <p
-              className="text-[#B3B3B3] font-['Inter']"
+              className="text-[#B3B3B3] font-body"
               style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
             >
               ⸻
             </p>
 
             {/* Dataset Design */}
-            <div className="space-y-4">
+            <div id="dataset-design" className="space-y-4">
               <h2
-                className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight"
+                className="text-[#0B0B0C] font-heading tracking-tight"
                 style={{ fontSize: '24px', fontWeight: 600, lineHeight: '1.2' }}
               >
                 Dataset Design
               </h2>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 Because real CRM data is typically proprietary and difficult to obtain, the project uses a synthetic
                 dataset designed to mimic realistic business scenarios.
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 The dataset includes features commonly found in enterprise sales pipelines:
               </p>
               <ul className="space-y-1 ml-6 list-disc">
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Expected deal value
                 </li>
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Number of stakeholders involved in the decision
                 </li>
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Estimated sales cycle length
                 </li>
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Number of technical integrations required
                 </li>
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Company size
                 </li>
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Estimated effort required to pursue the deal
                 </li>
               </ul>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 These variables represent common trade-offs that influence sales decisions.
@@ -471,22 +488,22 @@ export function ProjectLeadScorer() {
 
             {/* Separator */}
             <p
-              className="text-[#B3B3B3] font-['Inter']"
+              className="text-[#B3B3B3] font-body"
               style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
             >
               ⸻
             </p>
 
             {/* Synthetic Data Generation */}
-            <div className="space-y-4">
+            <div id="synthetic-data" className="space-y-4">
               <h2
-                className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight"
+                className="text-[#0B0B0C] font-heading tracking-tight"
                 style={{ fontSize: '24px', fontWeight: 600, lineHeight: '1.2' }}
               >
                 Synthetic Data Generation
               </h2>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 A custom dataset generator was implemented to produce large volumes of realistic lead data. The generator
@@ -494,40 +511,40 @@ export function ProjectLeadScorer() {
                 pipelines.
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 For example:
               </p>
               <ul className="space-y-1 ml-6 list-disc">
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Larger companies tend to have more stakeholders
                 </li>
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Larger deals often have longer sales cycles
                 </li>
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Deals with many integrations require more effort
                 </li>
               </ul>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 The generator produces thousands of synthetic leads, each with a set of features and an assigned priority
                 label.
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 This approach allowed the system to simulate realistic training data while maintaining full
@@ -537,106 +554,106 @@ export function ProjectLeadScorer() {
 
             {/* Separator */}
             <p
-              className="text-[#B3B3B3] font-['Inter']"
+              className="text-[#B3B3B3] font-body"
               style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
             >
               ⸻
             </p>
 
             {/* Labeling Strategy */}
-            <div className="space-y-4">
+            <div id="labeling-strategy" className="space-y-4">
               <h2
-                className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight"
+                className="text-[#0B0B0C] font-heading tracking-tight"
                 style={{ fontSize: '24px', fontWeight: 600, lineHeight: '1.2' }}
               >
                 Labeling Strategy
               </h2>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 Each lead receives a priority score based on a combination of value and complexity factors.
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 Positive factors include:
               </p>
               <ul className="space-y-1 ml-6 list-disc">
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Higher deal value
                 </li>
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Shorter sales cycles
                 </li>
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Fewer integrations
                 </li>
               </ul>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 Negative factors include:
               </p>
               <ul className="space-y-1 ml-6 list-disc">
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   High effort requirements
                 </li>
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Many stakeholders
                 </li>
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Long sales cycles
                 </li>
               </ul>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 The system combines these variables into a numerical score and converts the score into categorical labels
                 using quantile thresholds.
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 The final labels are:
               </p>
               <ul className="space-y-1 ml-6 list-disc">
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   High priority (top 25%)
                 </li>
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Medium priority (middle 50%)
                 </li>
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Low priority (bottom 25%)
@@ -646,73 +663,73 @@ export function ProjectLeadScorer() {
 
             {/* Separator */}
             <p
-              className="text-[#B3B3B3] font-['Inter']"
+              className="text-[#B3B3B3] font-body"
               style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
             >
               ⸻
             </p>
 
             {/* Machine Learning Pipeline */}
-            <div className="space-y-4">
+            <div id="ml-pipeline" className="space-y-4">
               <h2
-                className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight"
+                className="text-[#0B0B0C] font-heading tracking-tight"
                 style={{ fontSize: '24px', fontWeight: 600, lineHeight: '1.2' }}
               >
                 Machine Learning Pipeline
               </h2>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 The system is structured as a modular machine learning pipeline.
               </p>
 
               <p
-                className="text-[#0B0B0C] font-['Space_Grotesk']"
+                className="text-[#0B0B0C] font-heading"
                 style={{ fontSize: '20px', fontWeight: 600, lineHeight: '1.3' }}
               >
                 1. Data Generation
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 A CLI tool generates synthetic lead datasets containing thousands of samples.
               </p>
 
               <p
-                className="text-[#0B0B0C] font-['Space_Grotesk']"
+                className="text-[#0B0B0C] font-heading"
                 style={{ fontSize: '20px', fontWeight: 600, lineHeight: '1.3' }}
               >
                 2. Preprocessing
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 The dataset is cleaned and transformed before training.
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 Steps include:
               </p>
               <ul className="space-y-1 ml-6 list-disc">
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Feature normalization
                 </li>
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Encoding categorical variables
                 </li>
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Preparing feature matrices for model training
@@ -722,7 +739,7 @@ export function ProjectLeadScorer() {
 
             {/* Separator */}
             <p
-              className="text-[#B3B3B3] font-['Inter']"
+              className="text-[#B3B3B3] font-body"
               style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
             >
               ⸻
@@ -731,33 +748,33 @@ export function ProjectLeadScorer() {
             {/* 3. Model Training */}
             <div className="space-y-4">
               <p
-                className="text-[#0B0B0C] font-['Space_Grotesk']"
+                className="text-[#0B0B0C] font-heading"
                 style={{ fontSize: '20px', fontWeight: 600, lineHeight: '1.3' }}
               >
                 3. Model Training
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 Two baseline classification models were implemented:
               </p>
               <ul className="space-y-1 ml-6 list-disc">
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Logistic Regression
                 </li>
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Decision Tree Classifier
                 </li>
               </ul>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 These models learn relationships between lead characteristics and priority labels.
@@ -766,7 +783,7 @@ export function ProjectLeadScorer() {
 
             {/* Separator */}
             <p
-              className="text-[#B3B3B3] font-['Inter']"
+              className="text-[#B3B3B3] font-body"
               style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
             >
               ⸻
@@ -775,51 +792,51 @@ export function ProjectLeadScorer() {
             {/* 4. Model Evaluation */}
             <div className="space-y-4">
               <p
-                className="text-[#0B0B0C] font-['Space_Grotesk']"
+                className="text-[#0B0B0C] font-heading"
                 style={{ fontSize: '20px', fontWeight: 600, lineHeight: '1.3' }}
               >
                 4. Model Evaluation
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 The trained models are evaluated using a standard train/test split.
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 Performance metrics include:
               </p>
               <ul className="space-y-1 ml-6 list-disc">
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Accuracy
                 </li>
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Precision
                 </li>
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Recall
                 </li>
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Confusion matrix analysis
                 </li>
               </ul>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 This allows the system to measure how well the model predicts lead priorities on unseen data.
@@ -828,7 +845,7 @@ export function ProjectLeadScorer() {
 
             {/* Separator */}
             <p
-              className="text-[#B3B3B3] font-['Inter']"
+              className="text-[#B3B3B3] font-body"
               style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
             >
               ⸻
@@ -837,19 +854,19 @@ export function ProjectLeadScorer() {
             {/* 5. Opportunity Ranking */}
             <div className="space-y-4">
               <p
-                className="text-[#0B0B0C] font-['Space_Grotesk']"
+                className="text-[#0B0B0C] font-heading"
                 style={{ fontSize: '20px', fontWeight: 600, lineHeight: '1.3' }}
               >
                 5. Opportunity Ranking
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 Once trained, the model can analyze new leads and estimate their priority level.
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 This allows the system to simulate how an AI-driven prioritization tool might assist sales teams in
@@ -859,22 +876,22 @@ export function ProjectLeadScorer() {
 
             {/* Separator */}
             <p
-              className="text-[#B3B3B3] font-['Inter']"
+              className="text-[#B3B3B3] font-body"
               style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
             >
               ⸻
             </p>
 
             {/* System Architecture */}
-            <div className="space-y-4">
+            <div id="system-architecture" className="space-y-4">
               <h2
-                className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight"
+                className="text-[#0B0B0C] font-heading tracking-tight"
                 style={{ fontSize: '24px', fontWeight: 600, lineHeight: '1.2' }}
               >
                 System Architecture
               </h2>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 The project is structured as a modular Python repository.
@@ -898,7 +915,7 @@ scripts/
   run_pipeline`}
               </pre>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 This structure separates the different stages of the machine learning pipeline while keeping the system
@@ -908,36 +925,36 @@ scripts/
 
             {/* Separator */}
             <p
-              className="text-[#B3B3B3] font-['Inter']"
+              className="text-[#B3B3B3] font-body"
               style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
             >
               ⸻
             </p>
 
             {/* Results */}
-            <div className="space-y-4">
+            <div id="results" className="space-y-4">
               <h2
-                className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight"
+                className="text-[#0B0B0C] font-heading tracking-tight"
                 style={{ fontSize: '24px', fontWeight: 600, lineHeight: '1.2' }}
               >
                 Results
               </h2>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 The trained models successfully learned relationships between deal characteristics and lead priority
                 levels.
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 Evaluation results demonstrate that the system can consistently classify leads based on the underlying
                 trade-offs between value and effort.
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 The project demonstrates how machine learning can be used to simulate operational decision-support systems
@@ -947,67 +964,67 @@ scripts/
 
             {/* Separator */}
             <p
-              className="text-[#B3B3B3] font-['Inter']"
+              className="text-[#B3B3B3] font-body"
               style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
             >
               ⸻
             </p>
 
             {/* Future Improvements */}
-            <div className="space-y-4">
+            <div id="future-improvements" className="space-y-4">
               <h2
-                className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight"
+                className="text-[#0B0B0C] font-heading tracking-tight"
                 style={{ fontSize: '24px', fontWeight: 600, lineHeight: '1.2' }}
               >
                 Future Improvements
               </h2>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 While the current implementation demonstrates the core concepts, several improvements could expand the
                 system further.
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 Potential enhancements include:
               </p>
               <ul className="space-y-1 ml-6 list-disc">
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Incorporating additional CRM features
                 </li>
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Training more advanced models such as gradient boosting
                 </li>
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Adding model explainability tools
                 </li>
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Integrating the system with a real CRM dataset
                 </li>
                 <li
-                  className="text-[#4B4B4B] font-['Inter']"
+                  className="text-[#4B4B4B] font-body"
                   style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
                 >
                   Building an interactive dashboard interface
                 </li>
               </ul>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 These extensions would move the system closer to a production-ready analytics platform.
@@ -1016,22 +1033,22 @@ scripts/
 
             {/* Separator */}
             <p
-              className="text-[#B3B3B3] font-['Inter']"
+              className="text-[#B3B3B3] font-body"
               style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
             >
               ⸻
             </p>
 
             {/* Project Outcome */}
-            <div className="space-y-4">
+            <div id="project-outcome" className="space-y-4">
               <h2
-                className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight"
+                className="text-[#0B0B0C] font-heading tracking-tight"
                 style={{ fontSize: '24px', fontWeight: 600, lineHeight: '1.2' }}
               >
                 Project Outcome
               </h2>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 Lead Scorer demonstrates the design and implementation of an end-to-end machine learning workflow for
@@ -1039,7 +1056,7 @@ scripts/
                 assist teams in prioritizing opportunities and allocating resources more effectively.
               </p>
               <p
-                className="text-[#4B4B4B] font-['Inter']"
+                className="text-[#4B4B4B] font-body"
                 style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
               >
                 Beyond the technical implementation, the project also explores the broader role of AI in supporting
@@ -1049,7 +1066,7 @@ scripts/
 
             {/* Final Separator */}
             <p
-              className="text-[#B3B3B3] font-['Inter']"
+              className="text-[#B3B3B3] font-body"
               style={{ fontSize: '18px', fontWeight: 400, lineHeight: '1.7' }}
             >
               ⸻

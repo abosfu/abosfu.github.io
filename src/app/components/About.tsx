@@ -5,8 +5,8 @@ export function About() {
         {/* Section Header */}
         <div className="mb-16 text-center">
           <h2
-            className="text-[#0B0B0C] font-['Space_Grotesk'] tracking-tight uppercase"
-            style={{ fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 500, lineHeight: '1.1', letterSpacing: '0.05em' }}
+            className="text-[#0B0B0C] font-[var(--font-heading)] uppercase"
+            style={{ fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 600, lineHeight: '1.15', letterSpacing: '0.04em' }}
           >
             About
           </h2>
@@ -15,21 +15,21 @@ export function About() {
         {/* Content - Seamless, No Boxes */}
         <div className="space-y-6 max-w-3xl mx-auto">
           <p
-            className="text-[#4B4B4B] font-['Inter']"
+            className="text-[#4B4B4B] font-[var(--font-body)]"
             style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}
           >
             I build from the problem outward.
           </p>
 
           <p
-            className="text-[#4B4B4B] font-['Inter']"
+            className="text-[#4B4B4B] font-[var(--font-body)]"
             style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}
           >
             Who feels this pain? Why does it matter? What would make it valuable enough to pay for?
           </p>
 
           <p
-            className="text-[#4B4B4B] font-['Inter']"
+            className="text-[#4B4B4B] font-[var(--font-body)]"
             style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}
           >
             Technical instinct: clean systems.
@@ -38,7 +38,7 @@ export function About() {
           </p>
 
           <p
-            className="text-[#4B4B4B] font-['Inter']"
+            className="text-[#4B4B4B] font-[var(--font-body)]"
             style={{ fontSize: '19px', fontWeight: 400, lineHeight: '1.8' }}
           >
             I build decision tools that turn signals into action—scores, roadmaps, and next steps.

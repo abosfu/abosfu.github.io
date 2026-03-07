@@ -49,7 +49,7 @@ export function Experience() {
 
                   {/* Description */}
                   <p
-                    className="text-[#4B4B4B] font-['Inter']"
+                    className="text-[#4B4B4B] font-[var(--font-body)]"
                     style={{ fontSize: '15px', fontWeight: 400, lineHeight: '1.6' }}
                   >
                     {exp.description}
