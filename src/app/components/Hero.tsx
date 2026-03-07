@@ -142,7 +142,9 @@ export function Hero({ onViewProjects, onCopyEmail }: HeroProps) {
             </p>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div
+            className={`flex items-center gap-4 transition-opacity duration-700 ${done ? 'opacity-100' : 'opacity-0 pointer-events-none h-0 overflow-hidden'}`}
+          >
             <a
               href="https://github.com/abosfu"
               target="_blank"
