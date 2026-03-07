@@ -14,22 +14,23 @@ export function Navbar({ onCopyEmail }: NavbarProps) {
 
   useEffect(() => {
     if (!isHomePage) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-            break;
-          }
+    const sectionIds = ['projects', 'contact'];
+    const getActiveSection = () => {
+      const viewportMid = window.scrollY + window.innerHeight * 0.4;
+      let active: string | null = null;
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY;
+          if (top <= viewportMid) active = id;
         }
-      },
-      { rootMargin: '-40% 0px -40% 0px', threshold: 0 }
-    );
-    ['projects', 'contact'].forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
+      }
+      return active ?? sectionIds[0];
+    };
+    const onScroll = () => setActiveSection(getActiveSection());
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, [isHomePage]);
 
   const scrollToSection = (sectionId: string) => {
