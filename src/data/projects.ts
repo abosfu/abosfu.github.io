@@ -43,10 +43,10 @@ export const projectsData: ProjectData[] = [
   {
     id: 'marketscout',
     title: 'MarketScout',
-    description: 'CLI decision-support engine that analyzes live market signals to identify and rank operational opportunities by city and industry.',
-    tech: ['Python', 'Pydantic', 'Requests', 'SQLite'],
+    description: 'An AI-powered Market Intelligence System that converts live market signals into Star Schema data models, Natural Language SQL queries, and live BI dashboards.',
+    tech: ['Python', 'FastAPI', 'PostgreSQL', 'dbt', 'LLMs / NL2SQL', 'Tableau'],
     githubUrl: 'https://github.com/abosfu/marketscout',
-    category: 'Decision Support',
+    category: 'AI Data Engineering',
     caseStudyRoute: '/projects/marketscout',
     slides: [
       '/images/marketscout/1.png',
