@@ -6,12 +6,10 @@ import { ProjectSideNav } from '@/app/components/ProjectSideNav';
 const fightmatch = projectsData.find(p => p.id === 'fightmatch')!;
 
 const FIGHT_MATCH_SECTIONS = [
-  { id: 'fightmatch-intro', label: 'FightMatch' },
+  { id: 'fightmatch-intro', label: 'Introduction' },
   { id: 'the-problem', label: 'The Problem' },
   { id: 'the-solution', label: 'The Solution' },
   { id: 'how-it-works', label: 'How the System Works' },
-  { id: 'technical-architecture', label: 'Technical Architecture' },
-  { id: 'command-line', label: 'Command Line Workflow' },
   { id: 'engineering-challenges', label: 'Engineering Challenges' },
   { id: 'technologies', label: 'Technologies' },
   { id: 'results', label: 'Results' },
@@ -94,19 +92,13 @@ export function ProjectFightMatch() {
           <div className="max-w-5xl mx-auto space-y-8 pt-16">
             <div id="fightmatch-intro" className="space-y-4">
               <h2 className={sectionHeading} style={{ fontSize: '28px', ...sectionHeadingStyle }}>
-                FightMatch
+                Introduction
               </h2>
               <p className={bodyClass} style={bodyStyle}>
-                Sports analytics platform for fighter evaluation, matchup simulation, and promoter-style fight recommendations.
+                FightMatch bridges the gap between complex relational databases and non-technical decision-makers. It transforms raw historical performance data into an interactive, AI-driven Business Intelligence platform.
               </p>
               <p className={bodyClass} style={bodyStyle}>
-                FightMatch is a sports analytics decision platform built on real UFC fight data. It collects and structures historical fight statistics, computes fighter ratings and analytics profiles, simulates head-to-head matchups, and applies a promoter-style decision scoring model to surface explainable fight recommendations.
-              </p>
-              <p className={bodyClass} style={bodyStyle}>
-                The platform is designed around the idea that matchmaking decisions — which fighters to book, which contenders deserve the next opportunity, which pairings make competitive and commercial sense — benefit from a structured analytical layer rather than purely subjective judgment.
-              </p>
-              <p className={bodyClass} style={bodyStyle}>
-                FightMatch produces structured reports at every stage: fighter analytics profiles, division ratings, matchup simulation outputs, and scored promoter recommendations. Each output is explainable and traceable back to the underlying performance data.
+                Instead of relying on static dashboards or black-box predictive models, FightMatch utilizes a dual-LLM architecture. Users can ask natural language questions (e.g., &quot;Who has the striking advantage between Fighter A and Fighter B?&quot;), which the system securely translates into executable SQL queries. It then processes the raw data return into human-readable strategic narratives and dynamic visual charts.
               </p>
             </div>
 
@@ -115,22 +107,21 @@ export function ProjectFightMatch() {
             <div id="the-problem" className="space-y-4">
               <h2 className={sectionHeading} style={sectionHeadingStyle}>The Problem</h2>
               <p className={bodyClass} style={bodyStyle}>
-                Combat sports promotions regularly face complex matchmaking decisions:
+                Combat sports promotions and sports analysts face a massive data bottleneck.
               </p>
               <ul className="space-y-2 ml-6 list-disc">
-                <li className={bodyClass} style={bodyStyle}>Which fighters deserve the next title opportunity?</li>
-                <li className={bodyClass} style={bodyStyle}>Which matchups would be competitive and exciting for fans?</li>
-                <li className={bodyClass} style={bodyStyle}>How do recent performance trends affect contender rankings?</li>
-                <li className={bodyClass} style={bodyStyle}>Which stylistic matchups produce the most compelling fights?</li>
+                <li className={bodyClass} style={bodyStyle}>
+                  Decision-makers (matchmakers, executives) rely on rigid, static dashboards to evaluate talent and book fights.
+                </li>
+                <li className={bodyClass} style={bodyStyle}>
+                  Predictive machine learning models often output &quot;black-box&quot; probabilities (e.g., &quot;Fighter A has a 65% chance to win&quot;) without explaining <em>why</em>, breaking user trust.
+                </li>
+                <li className={bodyClass} style={bodyStyle}>
+                  Querying complex historical performance trends traditionally requires a dedicated data engineer to write SQL.
+                </li>
               </ul>
               <p className={bodyClass} style={bodyStyle}>
-                Matchmaking decisions often require reviewing large amounts of fight data and interpreting performance trends manually.
-              </p>
-              <p className={bodyClass} style={bodyStyle}>
-                FightMatch explores whether a structured analytical approach can assist with this process.
-              </p>
-              <p className={bodyClass} style={bodyStyle}>
-                The goal of the project is not to replace human matchmaking, but to demonstrate how data pipelines and scoring models can support decision-making in sports analytics.
+                The goal was to build a system where stakeholders could explore competitive data dynamically, using natural language to uncover actionable insights instantly.
               </p>
             </div>
 
@@ -139,263 +130,93 @@ export function ProjectFightMatch() {
             <div id="the-solution" className="space-y-4">
               <h2 className={sectionHeading} style={sectionHeadingStyle}>The Solution</h2>
               <p className={bodyClass} style={bodyStyle}>
-                FightMatch is organized around five purpose-built layers, each responsible for a distinct analytical stage.
+                FightMatch is built on a modern, 5-layer AI architecture designed for secure execution and explainability:
               </p>
-              <p className={bodyClass} style={bodyStyle}><strong>Fighter Data Engine</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Scrapes and parses real UFC fight data from UFCStats, caching pages locally and building structured JSON datasets covering fighters, events, bouts, and per-round statistics.
-              </p>
-              <p className={bodyClass} style={bodyStyle}><strong>Performance Analytics Engine</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Computes per-fighter analytics profiles and ratings from historical fight data. Outputs include striking differentials, grappling metrics, finish rates, activity signals, and opponent-strength-adjusted scores.
-              </p>
-              <p className={bodyClass} style={bodyStyle}><strong>Matchup Simulation Engine</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Runs head-to-head simulations between fighters using their analytics profiles. Produces a structured simulation report covering projected competitive balance and stylistic contrast signals.
-              </p>
-              <p className={bodyClass} style={bodyStyle}><strong>Promoter Decision Engine</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Applies a multi-factor promoter-style scoring model to rank and recommend matchups. Weighs competitive balance, fighter activity, ranking proximity, rematch penalties, and business-relevance signals to surface the highest-value fight bookings.
-              </p>
-              <p className={bodyClass} style={bodyStyle}><strong>Reporting / Output Layer</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Generates explainable, structured reports at every stage — fighter profiles, division ratings, simulation summaries, and ranked recommendations — all traceable back to the underlying data.
-              </p>
+              <ol className="space-y-3 ml-6 list-decimal">
+                <li className={bodyClass} style={bodyStyle}>
+                  <strong className="text-[#0B0B0C] font-medium">Data Infrastructure (SQL):</strong> A normalized relational database storing fighters, events, bouts, and highly granular performance metrics.
+                </li>
+                <li className={bodyClass} style={bodyStyle}>
+                  <strong className="text-[#0B0B0C] font-medium">The API Bridge (FastAPI):</strong> A high-performance asynchronous backend that handles request routing and database sessions.
+                </li>
+                <li className={bodyClass} style={bodyStyle}>
+                  <strong className="text-[#0B0B0C] font-medium">NL2SQL Router:</strong> An LLM layer that ingests the user&apos;s natural language question, reads the database schema, and generates strict, valid SQL.
+                </li>
+                <li className={bodyClass} style={bodyStyle}>
+                  <strong className="text-[#0B0B0C] font-medium">Secure Execution Engine:</strong> A sandboxed environment that runs the generated SQL via read-only roles to prevent database manipulation.
+                </li>
+                <li className={bodyClass} style={bodyStyle}>
+                  <strong className="text-[#0B0B0C] font-medium">Semantic Explanation Layer:</strong> A secondary LLM pass that translates the raw JSON data payload into a plain-English strategic breakdown, presented on a React/Tailwind frontend alongside dynamic charts.
+                </li>
+              </ol>
             </div>
 
             <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
-            <div id="how-it-works" className="space-y-4">
+            <div id="how-it-works" className="space-y-6">
               <h2 className={sectionHeading} style={sectionHeadingStyle}>How the System Works</h2>
               <p className={bodyClass} style={bodyStyle}>
-                FightMatch follows a layered pipeline architecture. Each layer has a single responsibility and passes clean, validated output to the next.
+                The platform moves from raw data to visual insight in milliseconds:
               </p>
-
-              <p className="text-[#0B0B0C] font-heading" style={subHeadingStyle}>1. Fighter Data Engine</p>
-              <p className={bodyClass} style={bodyStyle}>
-                The pipeline begins by scraping UFCStats event and fight pages. The scraper retrieves fighter metadata, bout results, and per-round statistics, caching HTML locally for reproducible runs. Raw pages are parsed and normalized into four structured datasets: <strong>fighters.json</strong>, <strong>events.json</strong>, <strong>bouts.json</strong>, and <strong>stats.jsonl</strong>.
-              </p>
-            </div>
-
-            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
-
-            <div className="space-y-4">
-              <p className="text-[#0B0B0C] font-heading" style={subHeadingStyle}>2. Performance Analytics Engine</p>
-              <p className={bodyClass} style={bodyStyle}>
-                Fighter features are computed from the structured datasets. Each fighter receives an analytics profile covering striking output, grappling efficiency, finish rate, activity level, win streak momentum, and opponent-strength-adjusted performance. A rating model aggregates these signals into a single comparable score per fighter per division.
-              </p>
-            </div>
-
-            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
-
-            <div className="space-y-4">
-              <p className="text-[#0B0B0C] font-heading" style={subHeadingStyle}>3. Matchup Simulation Engine</p>
-              <p className={bodyClass} style={bodyStyle}>
-                Given two fighters, the simulation engine compares their analytics profiles head-to-head. It computes projected competitive balance, identifies stylistic contrast signals (e.g., striker vs grappler, wrestler vs counter-puncher), and produces a structured simulation report capturing the expected dynamic of the matchup.
-              </p>
-            </div>
-
-            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
-
-            <div className="space-y-4">
-              <p className="text-[#0B0B0C] font-heading" style={subHeadingStyle}>4. Promoter Decision Engine</p>
-              <p className={bodyClass} style={bodyStyle}>
-                The promoter engine scores potential matchups using a multi-factor model that weighs competitive closeness, ranking proximity, fighter activity, rematch penalties, and business-relevance signals. It returns a ranked list of recommended fights with a written explanation for each recommendation.
-              </p>
-            </div>
-
-            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
-
-            <div className="space-y-4">
-              <p className="text-[#0B0B0C] font-heading" style={subHeadingStyle}>5. Reporting / Output Layer</p>
-              <p className={bodyClass} style={bodyStyle}>
-                Every stage of the pipeline produces a structured JSON report. Outputs include per-fighter analytics profiles, division rating rankings, matchup simulation summaries, individual promoter-scored recommendations, and all-division summary reports. All outputs are explainable and traceable back to the source data.
-              </p>
-            </div>
-
-            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
-
-            <div id="technical-architecture" className="space-y-4">
-              <h2 className={sectionHeading} style={sectionHeadingStyle}>Technical Architecture</h2>
-              <p className={bodyClass} style={bodyStyle}>
-                FightMatch is built as a modular Python project with clearly separated components. Each module maps directly to a layer in the analytics pipeline.
-              </p>
-              <pre className="bg-[#F9F9F9] border border-[#E6E6E6] rounded-xl p-4 overflow-x-auto text-sm font-mono text-[#0B0B0C] whitespace-pre">
-{`fightmatch
-│
-├── scrape
-├── data
-├── analytics
-│   ├── rating.py
-│   └── profile.py
-├── engine
-│   ├── simulate.py
-│   └── promoter.py
-├── match
-├── cli.py
-└── config.py`}
-              </pre>
-              <p className={bodyClass} style={bodyStyle}><strong>scrape</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Retrieves and caches UFC event and fight pages from UFCStats.
-              </p>
-              <p className={bodyClass} style={bodyStyle}><strong>data</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Parses raw HTML and builds structured JSON datasets (fighters, events, bouts, stats).
-              </p>
-              <p className={bodyClass} style={bodyStyle}><strong>analytics</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Computes fighter ratings (<code>rating.py</code>) and generates per-fighter analytics profiles (<code>profile.py</code>) from the structured datasets.
-              </p>
-              <p className={bodyClass} style={bodyStyle}><strong>engine</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Runs head-to-head matchup simulations (<code>simulate.py</code>) and applies the promoter-style decision scoring model to produce ranked recommendations (<code>promoter.py</code>).
-              </p>
-              <p className={bodyClass} style={bodyStyle}><strong>match</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Coordinates the full matchmaking workflow across all divisions.
-              </p>
-              <p className={bodyClass} style={bodyStyle}><strong>cli.py / config.py</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Exposes the entire pipeline through a clean command-line interface and centralizes configuration.
-              </p>
-            </div>
-
-            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
-
-            <div id="command-line" className="space-y-4">
-              <h2 className={sectionHeading} style={sectionHeadingStyle}>Command Line Workflow</h2>
-              <p className={bodyClass} style={bodyStyle}>
-                The full pipeline can be run end-to-end through the CLI:
-              </p>
-              <p className={bodyClass} style={bodyStyle}><strong>fightmatch scrape</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Fetch and cache UFC event and fight data from UFCStats.
-              </p>
-              <p className={bodyClass} style={bodyStyle}><strong>fightmatch build-dataset</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Parse cached HTML into structured JSON datasets.
-              </p>
-              <p className={bodyClass} style={bodyStyle}><strong>fightmatch features</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Compute fighter performance features from the datasets.
-              </p>
-              <p className={bodyClass} style={bodyStyle}><strong>fightmatch fighter-profile</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Generate a detailed analytics profile for a specific fighter.
-              </p>
-              <p className={bodyClass} style={bodyStyle}><strong>fightmatch simulate</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Run a head-to-head matchup simulation between two fighters.
-              </p>
-              <p className={bodyClass} style={bodyStyle}><strong>fightmatch recommend</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Generate promoter-scored fight recommendations for a division.
-              </p>
-              <p className={bodyClass} style={bodyStyle}><strong>fightmatch recommend-all</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Run recommendations across all divisions and produce a summary report.
-              </p>
-              <p className={bodyClass} style={bodyStyle}><strong>fightmatch demo</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Run a full end-to-end demonstration of the pipeline.
-              </p>
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <p className="text-[#0B0B0C] font-heading" style={subHeadingStyle}>Natural Language Input</p>
+                  <p className={bodyClass} style={bodyStyle}>
+                    User asks: &quot;Find active lightweight fighters with a finish rate above 70%.&quot;
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-[#0B0B0C] font-heading" style={subHeadingStyle}>Schema Injection &amp; Query Generation</p>
+                  <p className={bodyClass} style={bodyStyle}>
+                    The API passes the request and the SQL DDL to the LLM to generate a <code className="text-[#0B0B0C] bg-[#F0F0F0] px-1.5 py-0.5 rounded text-sm">SELECT</code> statement.
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-[#0B0B0C] font-heading" style={subHeadingStyle}>Database Execution</p>
+                  <p className={bodyClass} style={bodyStyle}>
+                    SQLAlchemy executes the query securely against the database.
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-[#0B0B0C] font-heading" style={subHeadingStyle}>Narrative Synthesis</p>
+                  <p className={bodyClass} style={bodyStyle}>
+                    The system feeds the raw data return back to the LLM to generate a 2–3 sentence strategic summary.
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-[#0B0B0C] font-heading" style={subHeadingStyle}>Visualization</p>
+                  <p className={bodyClass} style={bodyStyle}>
+                    The React frontend renders the text narrative alongside dynamic Recharts (e.g., radar charts for stylistic comparisons).
+                  </p>
+                </div>
+              </div>
             </div>
 
             <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
             <div id="engineering-challenges" className="space-y-4">
               <h2 className={sectionHeading} style={sectionHeadingStyle}>Engineering Challenges</h2>
-              <p className={bodyClass} style={bodyStyle}>
-                Several technical challenges were addressed during development.
-              </p>
-              <p className={bodyClass} style={bodyStyle}><strong>Data Normalization</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Fight statistics often appear in inconsistent formats.
-              </p>
-              <p className={bodyClass} style={bodyStyle}>
-                The parser normalizes:
-              </p>
-              <ul className="space-y-2 ml-6 list-disc">
-                <li className={bodyClass} style={bodyStyle}>weight class labels</li>
-                <li className={bodyClass} style={bodyStyle}>fighter identifiers</li>
-                <li className={bodyClass} style={bodyStyle}>missing statistics</li>
+              <ul className="space-y-4 ml-6 list-disc">
+                <li className={bodyClass} style={bodyStyle}>
+                  <strong className="text-[#0B0B0C] font-medium">Safe NL2SQL Execution:</strong> AI models are prone to hallucination. Allowing an LLM to generate and execute SQL required strict schema prompting, Pydantic validation, and implementing read-only database roles to prevent accidental data mutation or DROP commands.
+                </li>
+                <li className={bodyClass} style={bodyStyle}>
+                  <strong className="text-[#0B0B0C] font-medium">Deterministic Explainability:</strong> Ensuring the AI didn&apos;t invent narratives. The explanation prompt is strictly constrained to only use the exact JSON data returned by the SQL query, guaranteeing that the business intelligence is grounded in mathematical fact.
+                </li>
+                <li className={bodyClass} style={bodyStyle}>
+                  <strong className="text-[#0B0B0C] font-medium">State Management:</strong> Moving from a linear CLI script to a decoupled FastAPI/React architecture required redesigning how simulation states and what-if scenarios are managed across HTTP requests.
+                </li>
               </ul>
-              <p className={bodyClass} style={bodyStyle}>
-                This ensures downstream calculations remain stable.
-              </p>
-            </div>
-
-            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
-
-            <div className="space-y-4">
-              <p className={bodyClass} style={bodyStyle}><strong>Robust HTML Parsing</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Event pages and fight pages contain complex tables and nested structures.
-              </p>
-              <p className={bodyClass} style={bodyStyle}>
-                The parser was designed to tolerate missing fields and partial data without crashing the pipeline.
-              </p>
-            </div>
-
-            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
-
-            <div className="space-y-4">
-              <p className={bodyClass} style={bodyStyle}><strong>Division Filtering</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Different pages represent weight classes in slightly different ways.
-              </p>
-              <p className={bodyClass} style={bodyStyle}>
-                The system implements normalization logic to ensure that labels such as:
-              </p>
-              <p className={bodyClass} style={bodyStyle}>
-                Welterweight<br />
-                Welterweight Bout
-              </p>
-              <p className={bodyClass} style={bodyStyle}>
-                are treated consistently.
-              </p>
-            </div>
-
-            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
-
-            <div className="space-y-4">
-              <p className={bodyClass} style={bodyStyle}><strong>Promoter Scoring Design</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Designing the promoter decision model required balancing multiple competing signals — competitive balance, activity, ranking proximity, and business-relevance — without over-fitting to any single factor.
-              </p>
-              <p className={bodyClass} style={bodyStyle}>
-                The model uses decay-weighted performance metrics so that recent fights carry more influence than older ones.
-              </p>
             </div>
 
             <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
 
             <div id="technologies" className="space-y-4">
               <h2 className={sectionHeading} style={sectionHeadingStyle}>Technologies</h2>
-              <p className={bodyClass} style={bodyStyle}>
-                FightMatch was built using a lightweight Python sports analytics stack.
-              </p>
-              <p className={bodyClass} style={bodyStyle}><strong>Languages</strong></p>
-              <ul className="space-y-2 ml-6 list-disc">
-                <li className={bodyClass} style={bodyStyle}>Python</li>
-              </ul>
-              <p className={bodyClass} style={bodyStyle}><strong>Libraries</strong></p>
-              <ul className="space-y-2 ml-6 list-disc">
-                <li className={bodyClass} style={bodyStyle}>BeautifulSoup — HTML parsing</li>
-                <li className={bodyClass} style={bodyStyle}>Requests — HTTP requests</li>
-                <li className={bodyClass} style={bodyStyle}>Pydantic — data validation and schema enforcement</li>
-                <li className={bodyClass} style={bodyStyle}>Pytest — automated testing</li>
-              </ul>
-              <p className={bodyClass} style={bodyStyle}><strong>Development Tools</strong></p>
-              <ul className="space-y-2 ml-6 list-disc">
-                <li className={bodyClass} style={bodyStyle}>Python virtual environments</li>
-                <li className={bodyClass} style={bodyStyle}>Git version control</li>
-                <li className={bodyClass} style={bodyStyle}>GitHub CI for automated tests</li>
-              </ul>
-              <p className={bodyClass} style={bodyStyle}>
-                The project includes a focused automated test suite to ensure core pipeline components remain stable across changes.
-              </p>
+              <p className={bodyClass} style={bodyStyle}><strong className="text-[#0B0B0C] font-medium">Backend:</strong> Python, FastAPI, SQLAlchemy, SQLite/PostgreSQL</p>
+              <p className={bodyClass} style={bodyStyle}><strong className="text-[#0B0B0C] font-medium">Frontend:</strong> React, TailwindCSS, Recharts</p>
+              <p className={bodyClass} style={bodyStyle}><strong className="text-[#0B0B0C] font-medium">AI &amp; Validation:</strong> OpenAI API, Pydantic</p>
+              <p className={bodyClass} style={bodyStyle}><strong className="text-[#0B0B0C] font-medium">Testing &amp; Quality:</strong> Pytest (119+ passing tests covering core algorithms and NL2SQL routing)</p>
             </div>
 
             <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
@@ -403,17 +224,7 @@ export function ProjectFightMatch() {
             <div id="results" className="space-y-4">
               <h2 className={sectionHeading} style={sectionHeadingStyle}>Results</h2>
               <p className={bodyClass} style={bodyStyle}>
-                The platform successfully produces:
-              </p>
-              <ul className="space-y-2 ml-6 list-disc">
-                <li className={bodyClass} style={bodyStyle}>fighter analytics profiles with per-fighter performance breakdowns</li>
-                <li className={bodyClass} style={bodyStyle}>fighter ratings and division rankings</li>
-                <li className={bodyClass} style={bodyStyle}>matchup simulation reports with projected competitive balance</li>
-                <li className={bodyClass} style={bodyStyle}>promoter-scored fight recommendations with written explanations</li>
-                <li className={bodyClass} style={bodyStyle}>all-division summary reports via a single command</li>
-              </ul>
-              <p className={bodyClass} style={bodyStyle}>
-                Together these outputs demonstrate how a structured analytics pipeline can support real sports decision-making workflows — from data collection through explainable recommendations.
+                FightMatch successfully demonstrates how to build a production-ready NL2SQL analytics platform. It proves that complex data engineering pipelines can be abstracted behind a clean, conversational UI. The system successfully generates deterministic win probabilities, strategic risk assessments, and interactive &quot;What-If&quot; scenarios (e.g., adjusting for short-notice fights or long layoffs) in real-time.
               </p>
             </div>
 
@@ -421,36 +232,11 @@ export function ProjectFightMatch() {
 
             <div id="future-improvements" className="space-y-4">
               <h2 className={sectionHeading} style={sectionHeadingStyle}>Future Improvements</h2>
-              <p className={bodyClass} style={bodyStyle}><strong>Richer Fighter Style Clustering</strong></p>
               <p className={bodyClass} style={bodyStyle}>
-                Group fighters into style archetypes using clustering on their analytics profiles to produce more nuanced stylistic matchup signals.
+                <strong className="text-[#0B0B0C] font-medium">Generalization (MarketScout Integration):</strong> Refactoring the core NL2SQL and competitive simulation engine to analyze corporate competitors, product launches, and market opportunities.
               </p>
-            </div>
-
-            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
-
-            <div className="space-y-4">
-              <p className={bodyClass} style={bodyStyle}><strong>Stronger Probability Modeling</strong></p>
               <p className={bodyClass} style={bodyStyle}>
-                Replace deterministic scoring with calibrated probability estimates for fight outcomes, giving the simulation engine more predictive credibility.
-              </p>
-            </div>
-
-            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
-
-            <div className="space-y-4">
-              <p className={bodyClass} style={bodyStyle}><strong>Dashboard / Visualization Layer</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Build an interactive interface for exploring fighter profiles, division rankings, and matchup recommendations without using the CLI.
-              </p>
-            </div>
-
-            <p className="text-[#B3B3B3] font-body" style={bodyStyle}>⸻</p>
-
-            <div className="space-y-4">
-              <p className={bodyClass} style={bodyStyle}><strong>Expanded Promoter Scoring Inputs</strong></p>
-              <p className={bodyClass} style={bodyStyle}>
-                Incorporate additional business and audience signals — such as social media reach, pay-per-view draw history, and regional market relevance — to make the promoter model more complete.
+                <strong className="text-[#0B0B0C] font-medium">Advanced Multi-Agent Routing:</strong> Implementing a specialized agent network where one LLM writes the SQL, a second reviews it for syntax errors, and a third formats the output.
               </p>
             </div>
 
@@ -459,16 +245,7 @@ export function ProjectFightMatch() {
             <div id="why-i-built-this" className="space-y-4">
               <h2 className={sectionHeading} style={sectionHeadingStyle}>Why I Built This</h2>
               <p className={bodyClass} style={bodyStyle}>
-                I'm interested in how data and analytics can support decision-making in complex domains.
-              </p>
-              <p className={bodyClass} style={bodyStyle}>
-                Combat sports matchmaking presents an interesting challenge because it requires balancing competitive fairness, fan interest, and fighter momentum.
-              </p>
-              <p className={bodyClass} style={bodyStyle}>
-                FightMatch explores how structured data pipelines and scoring models can assist in identifying competitive matchups.
-              </p>
-              <p className={bodyClass} style={bodyStyle}>
-                The project demonstrates how software engineering, data processing, and analytical modeling can be combined to explore real-world decision problems.
+                I built FightMatch to prove I can architect systems that turn raw data into decisions. While sports analytics is the domain, the underlying architecture—bridging the gap between a SQL database and a non-technical user via LLMs—is the exact challenge facing modern enterprise software. I wanted to build a portfolio piece that demonstrates full-stack product execution, from pipeline engineering to user experience.
               </p>
             </div>
 

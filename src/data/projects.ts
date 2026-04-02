@@ -57,10 +57,20 @@ export const projectsData: ProjectData[] = [
   {
     id: 'fightmatch',
     title: 'FightMatch',
-    description: 'Sports analytics platform for fighter evaluation, matchup simulation, and promoter-style fight recommendations.',
-    tech: ['Python', 'BeautifulSoup', 'Requests', 'Pydantic', 'Pytest', 'Analytics Engines', 'Report Generation'],
+    description:
+      'An AI-powered Competitive Decision Intelligence System that answers complex matchmaking questions using SQL-backed data and natural language queries.',
+    tech: [
+      'Python',
+      'FastAPI',
+      'React',
+      'PostgreSQL/SQLite',
+      'SQLAlchemy',
+      'OpenAI/LLM Integration',
+      'NL2SQL',
+      'Pydantic',
+    ],
     githubUrl: 'https://github.com/abosfu/fightmatch',
-    category: 'Sports Analytics',
+    category: 'AI Solutions',
     caseStudyRoute: '/projects/fightmatch',
     macbookImage: '/images/fightmatch/fightmatch.png',
   },
