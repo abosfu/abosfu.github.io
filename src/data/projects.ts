@@ -17,6 +17,33 @@ export interface ProjectData {
 
 export const projectsData: ProjectData[] = [
   {
+    id: 'marketscout',
+    title: 'MarketScout',
+    description:
+      "A live market intelligence system that surfaces real B2B targets from Google Jobs and news data — showing which companies are hiring, what pain they're signaling, and what to pitch them.",
+    tech: [
+      'Python',
+      'FastAPI',
+      'SQLite',
+      'Streamlit',
+      'SerpAPI',
+      'NewsAPI',
+      'Groq',
+      'NL2SQL',
+    ],
+    githubUrl: 'https://github.com/abosfu/marketscout',
+    category: 'AI Market Intelligence',
+    caseStudyRoute: '/projects/marketscout',
+    slides: [
+      '/images/marketscout/1.png',
+      '/images/marketscout/2.png',
+      '/images/marketscout/3.png',
+      '/images/marketscout/4.png',
+      '/images/marketscout/5.png',
+      '/images/marketscout/6.png',
+    ],
+  },
+  {
     id: 'lead-scorer',
     title: 'LeadScorer',
     description: 'AI System for Prioritizing Business Opportunities',
@@ -39,60 +66,6 @@ export const projectsData: ProjectData[] = [
     status: 'Concept',
     caseStudyRoute: '/projects/maple',
     macbookImage: '/images/maple/maplefront.png',
-  },
-  {
-    id: 'marketscout',
-    title: 'MarketScout',
-    description: 'An AI-powered Market Intelligence System that converts live market signals into Star Schema data models, Natural Language SQL queries, and live BI dashboards.',
-    tech: ['Python', 'FastAPI', 'PostgreSQL', 'dbt', 'LLMs / NL2SQL', 'Tableau'],
-    githubUrl: 'https://github.com/abosfu/marketscout',
-    category: 'AI Data Engineering',
-    caseStudyRoute: '/projects/marketscout',
-    slides: [
-      '/images/marketscout/1.png',
-      '/images/marketscout/2.png',
-      '/images/marketscout/3.png.png',
-    ],
-  },
-  {
-    id: 'fightmatch',
-    title: 'FightMatch',
-    description:
-      'An AI-powered Competitive Decision Intelligence System that answers complex matchmaking questions using SQL-backed data and natural language queries.',
-    tech: [
-      'Python',
-      'FastAPI',
-      'React',
-      'PostgreSQL/SQLite',
-      'SQLAlchemy',
-      'OpenAI/LLM Integration',
-      'NL2SQL',
-      'Pydantic',
-    ],
-    githubUrl: 'https://github.com/abosfu/fightmatch',
-    category: 'AI Solutions',
-    caseStudyRoute: '/projects/fightmatch',
-    macbookImage: '/images/fightmatch/fightmatch.png',
-  },
-  {
-    id: 'trajectory',
-    title: 'TRAJECTORY',
-    description:
-      'An AI-assisted career exploration web app that helps students, new grads, and career switchers compare paths and get structured next steps.',
-    tech: ['Next.js', 'TypeScript', 'tRPC', 'Prisma', 'PostgreSQL', 'Tailwind CSS'],
-    githubUrl: 'https://github.com/abosfu/tragectory',
-    category: 'FULL STACK',
-    role: 'Solo designer & developer',
-    timeline: '2025–present',
-    status: 'Complete',
-    caseStudyRoute: '/projects/trajectory',
-    slides: [
-      '/images/tragectory/1.png',
-      '/images/tragectory/2.png',
-      '/images/tragectory/3.png',
-      '/images/tragectory/4.png',
-      '/images/tragectory/5.png',
-    ],
   },
 ];
 

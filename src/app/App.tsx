@@ -4,11 +4,9 @@ import { Navbar } from '@/app/components/Navbar';
 import { Hero } from '@/app/components/Hero';
 import { Projects } from '@/app/components/Projects';
 import { Contact } from '@/app/components/Contact';
-import { ProjectTrajectory } from '@/app/pages/ProjectTrajectory';
 import { ProjectMaple } from '@/app/pages/ProjectMaple';
 import { ProjectLeadScorer } from './pages/ProjectLeadScorer';
 import { ProjectMarketScout } from './pages/ProjectMarketScout';
-import { ProjectFightMatch } from './pages/ProjectFightMatch';
 import { toast } from 'sonner';
 import { Toaster } from '@/app/components/ui/sonner';
 
@@ -57,10 +55,8 @@ function AppShell({ onCopyEmail }: { onCopyEmail: () => void }) {
       <main>
         <Routes>
           <Route path="/" element={<Home onCopyEmail={handleCopyEmail} />} />
-          <Route path="/projects/lead-scorer" element={<ProjectLeadScorer />} />
           <Route path="/projects/marketscout" element={<ProjectMarketScout />} />
-          <Route path="/projects/fightmatch" element={<ProjectFightMatch />} />
-          <Route path="/projects/trajectory" element={<ProjectTrajectory />} />
+          <Route path="/projects/lead-scorer" element={<ProjectLeadScorer />} />
           <Route path="/projects/maple" element={<ProjectMaple />} />
         </Routes>
       </main>
